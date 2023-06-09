@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 4</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 4</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Дано довжину у сантиметрах. Визначати скільки це метрів і кілометрів.
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+					
+					let long = parseFloat(prompt(`Введіть довжину у сантиметрах`,`0,0см`))
+					let longMeter = long / 100
+					let longKilometer = long / 100000
+
+					document.write(`Довжина яку Ви ввели має ${long}см, ${longMeter}м та ${longKilometer}км`)
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

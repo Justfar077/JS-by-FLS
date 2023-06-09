@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 1</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 1</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Знайти суму, добуток та частку двох дійсних чисел. Результат вивести у формі таблиці
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+					let firstNumber = parseFloat(prompt("Введіть перше дійсне число", "0.0"))
+					let secondNumber = parseFloat(prompt("Введіть друге дійсне число", "0.0"))
+
+					let sum = firstNumber + secondNumber
+					let mult = firstNumber * secondNumber
+					let div = firstNumber / secondNumber
+
+					document.write(`<table font-size: "25px">
+						<tr>
+							<th>Операція</th>
+							<th>Отримано</th>
+						</tr>
+						<tr>
+							<th>Сума</th>
+							<td>${sum}</td>
+						</tr>
+						<tr>
+							<th>Добуток</th>
+							<td>${mult.toFixed(3)}</td>
+						</tr>
+						<tr>
+							<th>Частка</th>
+							<td>${div.toFixed(3)}</td>
+						</tr>
+						</table>`)
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

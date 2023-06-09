@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 0</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 0</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">Задача 0. Обчислити значення виразів</p>
+			<img src="./img/task_0.jpg" alt="task-img" class="exercise__img">
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+					let a = parseFloat(prompt("Введіть число - a", "0"))
+					let b = parseFloat(prompt("Введіть число - b" , "0"))
+					let c = parseFloat(prompt("Введіть  число - c" , "0"))
+
+					let s1 = a + 12 + b
+					document.write(`S1 = ${s1} <br>`)
+
+					let s2 = Math.sqrt((a + b) / (2 * a));
+					document.write(`S2 = ${s2.toFixed(3)} </br>`);
+
+					let s3 = Math.cbrt((a + b) * c);
+					document.write(`S3 = ${s3.toFixed(3)} </br>`);
+
+					let s4 = Math.sin(a / -b)
+					document.write(`S4 = ${s4.toFixed(3)}`)
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>
