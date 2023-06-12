@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 1</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 1</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				З клавіатури вводиться ціна товару і кількість грошей.
+				Якщо грошей не вистачає то відмовляємо у покупці, інакше,
+				якщо ще залишаються гроші, то пропонуємо купити лотерею за 4 грн.
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+					let priceProduct = parseFloat(prompt(`Вкажіть вартість товару`))
+					let quantityMoney = parseFloat(prompt(`Вкажіть кількість грошей`))
+					const lotteryPrice = 4
+
+					if (quantityMoney < priceProduct)
+						alert(`У покупці відмовлено (недостатньо коштів)`)
+					else if (quantityMoney >= priceProduct + lotteryPrice) {
+						confirm(`Бажаєте купити лотерею за 4 гривні?`)
+						alert(`Спасибі за покупку`)
+					}
+					else
+						alert('Спасибі за покупку')
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>
