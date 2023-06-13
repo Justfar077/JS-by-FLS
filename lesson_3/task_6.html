@@ -27,45 +27,30 @@
 					let res
 
 					switch (monthNumber) {
+						case 12:
 						case 1:
-							res = `Січень`
+						case 2:
+							res = 'Зима'
+						break;
+						case 3:
+						case 4:
+						case 5:
+							res = 'Весна'
 							break;
-							case 2:
-							res =`Лютий`
+						case 6:
+						case 7:
+						case 8:
+							res = 'Літо'
 							break;
-							case 3:
-							res = `Березень`
+						case 9:
+						case 10:
+						case 11:
+							res = 'Осінь'
 							break;
-							case 4:
-							res = `Квітень`
-							break;
-							case 5:
-							res = `Травень`
-							break;
-							case 6:
-							res = `Червень`
-							break;
-							case 7:
-							res = `Липень`
-							break;
-							case 8:
-							res = `Серпень`
-							break;
-							case 9:
-							res = `Вересень`
-							break;
-							case 10:
-							res = `Жовтень`
-							break;
-							case 11:
-							res = `Листопад`
-							break;
-							case 12:
-							res = `Грудень`
-							break;
-						default: res = `Оновіть сторінку та спробуйте обрати цифри від 1 до 12`
-							break;
+						default:
+							res = 'Щось пішло не так'
 					}
+
 						alert(res)
 
 					
