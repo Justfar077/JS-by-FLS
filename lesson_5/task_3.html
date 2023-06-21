@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 3</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 3</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Поступово генерувати 100 випадкових чисел від 1 до 1000.
+				Підрахувати яких чисел більше: парних чи непарних.
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+	let evenNumber = 0
+	let oddNumber = 0
+
+for (let i = 1; i <= 100; i++) {
+	let randomNumber = 1 + Math.floor(Math.random() * 1000)
+	if(randomNumber % 2 === 0) evenNumber++
+	else oddNumber++
+	document.write(`<span style="display:inline-block; border: 1px solid black; padding: 5px; margin:2px">${randomNumber}</span>`)
+}
+
+document.write(`<div style="margin-top: 10px; font-size: 25px"><div>Парних чисел - ${evenNumber}</div><div>Не парних чисел - ${oddNumber}</div></div>`)
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 6</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 6</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Вивести на екран N абзаців (N вводиться користувачем) за зразком:
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+					let quantityParagraph = parseInt(prompt("Введіть бажану кількість абзаців"))
+							let p_result = '';
+							let h1_result = '';
+							let result = '';
+
+							if (quantityParagraph > 0 && quantityParagraph <= 10) {
+								for (let i = 1; i <= quantityParagraph; i++) {
+								h1_result = `<h1>Заголовок ${i}</h1>`;
+								let q = 0;
+								while (q < i) {
+									q++;
+									p_result += `<p>Розділ ${i}, параграф ${q}</p>`;
+								}
+								result += h1_result + p_result + '<hr>';
+								p_result = '';
+							}
+
+								document.write(`${result}`);
+							} else {
+							document.write('Спробуй ввести до 10 параграфів');
+							}
+					
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>
