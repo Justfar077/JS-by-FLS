@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 4</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 4</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				З клавіатури вводиться вартість одиниці товару.
+				Поки користувач не введе суму грошей,
+				яка достатня для купівлі товару або не відмовиться від
+				купівлі давати можливість вводити суму грошей.
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+					
+					const costProduct = parseFloat(prompt('Введіть вартість однієї одиниці товару'))
+					let quantityMoney = parseFloat(prompt('Введіть кількість грошей'))
+					let userBalance
+
+					while (quantityMoney < costProduct) {
+						alert('Недостатньо коштів')
+						let breakBuying = confirm('Додате ще коштів або скасуйте покупку')
+						if (breakBuying === true) {
+							quantityMoney += quantityMoney = parseFloat(prompt('Введіть кількість грошей'))
+						} 
+						else {
+							alert('Покупку скасовано')
+							break
+						}
+					}
+
+					if(quantityMoney >= costProduct){
+							alert('Вітаю, товар придбано')
+							userBalance = quantityMoney - costProduct
+							alert(`Ваша здача ${userBalance.toFixed(2)}`)
+						}
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

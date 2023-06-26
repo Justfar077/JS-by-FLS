@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 7</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 7</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Інвестор вклав  тис. грн на 20 років під 20% річних, податок складає 5% від суми прибутку.
+				Визначити за допомогою циклів суму, яку він одержить.
+			</p>
+			<p style="font-size: 17px;" class="exercise__result">
+				<script>
+					"use strict"
+					
+					let userDeposit = parseFloat(prompt('Введіть сумму яку ви хочете вкласти у депозит'))
+					const interestRate = 20
+					const tax = 5
+
+					for (let i = 1; i <= 20; i++) {
+						userDeposit += (userDeposit / 100 * interestRate)
+						userDeposit -= (userDeposit / 100 * tax)
+						document.write(`За ${i} рік Ви отримаєте ${userDeposit.toFixed(2)} з урахуванням ${tax}% податку<br>`)
+					}
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

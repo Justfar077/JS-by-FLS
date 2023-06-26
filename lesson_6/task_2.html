@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 2</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 2</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				З клавіатури вводитяться числа поки не буде введено 0. Знайти добуток чисел.
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+					
+									// 1й спосіб
+		// let sum = 0
+		// userNumber
+
+		// while (userNumber !== 0) {
+		// 	userNumber = parseFloat(prompt('Введіть число'))
+		// 	if(sum === 0){
+		// 		sum += userNumber
+		// 		continue
+		// 	}
+		// 	else if(userNumber === 0){
+		// 		break
+		// 	} 
+		// 	sum *= userNumber
+		// }
+
+		// document.write(`Добуток введених чисел = ${sum}`)
+
+						// 2й Спосіб(більш коротший по коду)
+
+				let userNumber = parseInt(prompt('Введіть число'))
+				let sum = 1
+				while (userNumber !== 0) {
+					sum *= userNumber
+					userNumber = parseInt(prompt('Введіть число'))
+				}
+				document.write(`Добуток введених чисел = ${sum}`)
+
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

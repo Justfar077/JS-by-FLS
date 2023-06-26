@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 5</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 5</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Написати програму, що виводить на екран таблицю множення на k (k вводиться з клавіатури).
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+					let userNumber = parseInt(prompt('Введіть число для множення'))
+					let numberTable = 1
+					for (let i = 1; i <= 10; i++) {
+						let res = userNumber * numberTable
+						document.write(`${userNumber} * ${numberTable} = ${res}<br>`)
+						++numberTable
+					}
+					
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>
