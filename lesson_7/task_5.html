@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 5</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 5</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Створити окремі функції, які переводять:
+				Сантиметри у дюйми;
+				Кілограми у фунти;
+				Кілометри у милі.
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+					const initialInch = 0.393701,
+					initialKilogram = 2.20462,
+					initialKilometer = 0.621371;
+
+					let resultInch,
+					resultPound,
+					resultMile,
+					userMenu,
+					userDataCentimeter,
+					userDataKilogram,
+					userDataKilometer;
+
+					function transCentimeterInch (userDataCentimeter) {
+						resultInch = userDataCentimeter * initialInch
+						return resultInch
+					}
+
+					function transKilogramPound (userDataKilogram) {
+						resultPound = userDataKilogram * initialKilogram
+						return resultPound
+					}
+
+					function transKilometerMile (userDataKilometer) {
+						resultMile = userDataKilometer * initialKilometer
+						return resultMile
+					}
+
+					userMenu = parseInt(prompt(`Виберіть пункт меню який вам підходить та введіть його:
+					1 - Сантиметри у дюйми 
+					2 - Кілограми у фунти
+					3 - Кілометри у милі
+					0 - Вийти з програми`))
+
+					switch (userMenu) {
+						case 0:
+							break;
+						case 1:
+						userDataCentimeter = parseFloat(prompt('Введіть кількість сантиметрів'))
+						transCentimeterInch (userDataCentimeter)
+						alert(`${resultInch.toFixed(2)} дюймів`)
+							break;
+							case 2:
+						userDataKilogram = parseFloat(prompt('Введіть кількість кілограмів'))
+						transKilogramPound (userDataKilogram)
+						alert(`${resultPound.toFixed(2)} фунтів`)
+							break;
+							case 3:
+						userDataKilometer = parseFloat(prompt('Введіть кількість кілометрів'))
+						transKilometerMile (userDataKilometer)
+						alert(`${resultMile.toFixed(2) } миль`)
+							break;
+						default: alert('Введені некоректні данні, оновіть сторінку та спробуйте ще раз')
+							break;
+					}
+					
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

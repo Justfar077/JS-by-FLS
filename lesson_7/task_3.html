@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 3</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 3</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Створити окремі функції, які для 4 чисел знаходять:
+				1-суму; 2-добуток; 3-середнє арифметичне; 4-мінімальне значення. 
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+					
+					alert('Введіть 4 окремих числа')
+					let firstUserNumber = parseFloat(prompt('Введіть перше число'))
+					let secondUserNumber = parseFloat(prompt('Введіть друге число'))
+					let thirdUserNumber = parseFloat(prompt('Введіть третє число'))
+					let fourthUserNumber = parseFloat(prompt('Введіть четверте число'))
+					let resultSum, resultMult, resultAverage,resultMinValue
+
+					function sum (firstUserNumber, secondUserNumber, thirdUserNumber, fourthUserNumber) {
+						resultSum = firstUserNumber + secondUserNumber + thirdUserNumber + fourthUserNumber
+						return resultSum
+					}
+
+					function mult (firstUserNumber, secondUserNumber, thirdUserNumber, fourthUserNumber) {
+						resultMult = firstUserNumber * secondUserNumber * thirdUserNumber * fourthUserNumber
+						return resultMult 
+					}
+
+					function average (firstUserNumber, secondUserNumber, thirdUserNumber, fourthUserNumber) {
+						resultAverage = (firstUserNumber + secondUserNumber + thirdUserNumber + fourthUserNumber) / 4
+						return resultAverage
+					}
+
+					function minValue (firstUserNumber, secondUserNumber, thirdUserNumber, fourthUserNumber) {
+						resultMinValue = Math.min(firstUserNumber, secondUserNumber, thirdUserNumber, fourthUserNumber)
+						return resultMinValue
+					}
+
+					document.write(`Числа які ввели ${firstUserNumber} ${secondUserNumber} ${thirdUserNumber} ${fourthUserNumber}`)
+					document.write('<br>')
+					document.write(`1) Сумма чисел ${sum(firstUserNumber, secondUserNumber, thirdUserNumber, fourthUserNumber)}`)
+					document.write('<br>')
+					document.write(`2) Добуток чисел ${mult(firstUserNumber, secondUserNumber, thirdUserNumber, fourthUserNumber)}`)
+					document.write('<br>')
+					document.write(`3) Середнє арифметичне ${average(firstUserNumber, secondUserNumber, thirdUserNumber, fourthUserNumber)}`)
+					document.write('<br>')
+					document.write(`4) Мінімальне значення ${minValue(firstUserNumber, secondUserNumber, thirdUserNumber, fourthUserNumber)}`)
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

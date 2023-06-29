@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 4</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 4</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів:
+				кількість парних, кількість додатних, кількість більших за 100.
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+					
+					alert('Введіть 3 окремих числа')
+					let firstUserNumber = parseFloat(prompt('Введіть перше число'))
+					let secondUserNumber = parseFloat(prompt('Введіть друге число'))
+					let thirdUserNumber = parseFloat(prompt('Введіть третє число'))
+					let evenNumber = 0, positiveNumber = 0, overOneHundredNumber = 0
+
+					function userMathFunction (firstUserNumber, secondUserNumber, thirdUserNumber) {
+
+						if (firstUserNumber % 2 === 0) 
+							evenNumber++
+						if (secondUserNumber % 2 === 0)
+							evenNumber++
+						if (thirdUserNumber % 2 === 0)
+							evenNumber++
+						
+						if (firstUserNumber > 0) 
+							positiveNumber++
+						if (secondUserNumber > 0)
+							positiveNumber++
+						if (thirdUserNumber > 0)
+							positiveNumber++
+
+						if (firstUserNumber > 100) 
+							overOneHundredNumber++
+						if (secondUserNumber > 100)
+							overOneHundredNumber++
+						if (thirdUserNumber > 100)
+							overOneHundredNumber++
+							return evenNumber, positiveNumber, overOneHundredNumber
+					}
+					userMathFunction (firstUserNumber, secondUserNumber, thirdUserNumber)
+
+					document.write(`Ви ввели числа ${firstUserNumber} ${secondUserNumber} ${thirdUserNumber}<br>`)
+					document.write(`Кількість парних чисел - ${evenNumber}<br> Кількість додатних чисел - ${positiveNumber}<br> Кількість чисел більше за 100 - ${overOneHundredNumber}`)
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

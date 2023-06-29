@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 8</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 8</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Створити функцію, яка виводить банер (у функцію передаються:
+				зображення, заголовок та посилання, куди переходимо при кліку на зображення
+				(тег img повине знаходитись у середині тега a: <a> <img src=”шлях”> </a>
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+					
+					let advertisingImage = "./img/2.jpg",
+					advertisingTitle = "New Minions movie",
+					advertisingLink = "https://www.youtube.com/watch?v=HhIl_XJ-OGA"
+
+					function advertisingLinkFunction (advertisingImage, advertisingTitle, advertisingLink) {
+						document.write(`
+							<div style="display:flex;flex-direction: column;align-items: center; ">
+								<h3 style="font-size: 25px; margin-bottom: 10px">${advertisingTitle}</h3>
+								<a style="border:0.2px solid gray" target="_blank" href="${advertisingLink}">
+									<img src="${advertisingImage}" alt="minions">
+								</a>
+							</div>`)
+					}
+					
+					advertisingLinkFunction (advertisingImage, advertisingTitle, advertisingLink)
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

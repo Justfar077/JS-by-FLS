@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 10</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 10</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Дано покази температур (довільна кількість).
+				Розробити функцію, яка дозволить знайти середнє
+				значення для додатних показів температури.
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+					
+					let userTemperature = parseFloat(prompt('Введіть кількість показів температур:'))
+
+							function getTemperature(userTemperature) {
+								let minTemp = -30,
+								maxTemp = 40,
+								sumPositiveTemperature = 0,
+								quantityTemperature = 0,
+								res;
+
+								for (let i = 1; i <= userTemperature; i++) {
+									let randomTemp = minTemp + Math.floor(Math.random() * (maxTemp - minTemp + 1));
+									if (randomTemp > 0) {
+										document.write(`Температура ${i}: ${randomTemp} <br>`)
+										sumPositiveTemperature += randomTemp
+										quantityTemperature++
+									}
+									else if(randomTemp < 0)
+									document.write(`Температура ${i}: ${randomTemp} <br>`)
+								}
+								res = sumPositiveTemperature / quantityTemperature
+								return res
+							}
+
+							let totalResult = getTemperature(userTemperature)
+							document.write(`Середнє значення для додатних показів температури: ${totalResult.toFixed(2)}`)
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

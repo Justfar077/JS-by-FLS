@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 7</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 7</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Створити функцію, яка випадковим чином виводить на екран
+				одне із 4 зображень (шляхи до зображень передаються у функцію)
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+					
+					const minNun = 1,
+					maxNum = 4
+					function slider () {
+						const randomNum = minNun + Math.floor(Math.random() * (maxNum - minNun +1))
+						document.write(`<img src="./img/${randomNum}.jpg" alt="minion">`)
+					}
+					slider ()
+
+					// не зовсім зрозумів щодо - (шляхи до зображень передаються у функцію)
+					// зробив нижче іншим чином, але що то за функція тоді, перша ніби лаконічніша)
+
+					// const minNun = 1,
+					// maxNum = 4,
+					// randomNum = minNun + Math.floor(Math.random() * (maxNum - minNun +1))
+					// let image = `<img src="./img/${randomNum}.jpg" alt="minion">`
+					// function slider (image) {
+					// 	document.write(image)
+					// }
+					// slider (image)
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>
