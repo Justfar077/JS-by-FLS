@@ -29,11 +29,11 @@
 // Призначення змінних
 const carNumberQuantitySeries = prompt('Введіть кількість номерних знаків для порівняння') //Введення кількості номерних знаків
 const targetLetterNumber = prompt('Введіть першу букву для порівняння номерів:', 'А') //Введення букви для порівняння
-const targetLengthSymbol = parseInt(prompt('Введіть кідькість символів на яку треба перевірити номер:', '5'))
+const targetLengthSymbol = parseInt(prompt('Введіть кідькість символів на яку треба перевірити номер:', '5')) //Введення цифри довжини для порівняння
 let carNumberList = getListCarNumber(carNumberQuantitySeries) //Виклик функції заповнення масиву
-let firstLetterRepeatNumber = getNumberLetterRepeat(carNumberList, targetLetterNumber)
-let firstAndLastLetterRepeat = getNumberFirsAndLastLetterRepeat(carNumberList)
-let carNumberLength = getNumberMoreXSymbol(carNumberList, targetLengthSymbol)
+let firstLetterRepeatNumber = getNumberLetterRepeat(carNumberList, targetLetterNumber) //Виклик функції перевірки елементів масиву які починаються на букву «А»(або яку задали)
+let firstAndLastLetterRepeat = getNumberFirsAndLastLetterRepeat(carNumberList) //Виклик функції перевірки чи співпадають перша і остання літери 
+let carNumberLength = getNumberMoreXSymbol(carNumberList, targetLengthSymbol) //Виклик функції перевірки чи складаються з більше ніш № символів 
 
 // Функція введення масиву
 function getListCarNumber (arrLength) {
