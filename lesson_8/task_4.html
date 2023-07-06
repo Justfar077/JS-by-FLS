@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 4</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 4</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задача 4. Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які :
+				•	починаються на букву «А»;
+				•	перша і остання літери співпадають;
+				•	складаються з більше ніж 5 символів;
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+					
+// Рішення
+// Призначення змінних
+const carNumberQuantitySeries = prompt('Введіть кількість номерних знаків для порівняння') //Введення кількості номерних знаків
+const targetLetterNumber = prompt('Введіть першу букву для порівняння номерів:', 'А') //Введення букви для порівняння
+const targetLengthSymbol = parseInt(prompt('Введіть кідькість символів на яку треба перевірити номер:', '5'))
+let carNumberList = getListCarNumber(carNumberQuantitySeries) //Виклик функції заповнення масиву
+let firstLetterRepeatNumber = getNumberLetterRepeat(carNumberList, targetLetterNumber)
+let firstAndLastLetterRepeat = getNumberFirsAndLastLetterRepeat(carNumberList)
+let carNumberLength = getNumberMoreXSymbol(carNumberList, targetLengthSymbol)
+
+// Функція введення масиву
+function getListCarNumber (arrLength) {
+		let arr = []
+		for (let i = 0; i < arrLength; i++) {
+		let num = prompt(`Введіть ${i+1} номер`)
+		arr.push(num)
+	}
+	return arr
+}
+
+// Функція перевірки елементів масиву які починаються на букву «А»(або яку задали)
+function getNumberLetterRepeat(array, targetLetter) {
+	let result = 0
+	for (let i = 0; i < array.length; i++) {
+		if(array[i][0] === targetLetter)
+		result++
+	}
+	return result
+}
+
+// Функція перевірки чи співпадають перша і остання літери 
+function getNumberFirsAndLastLetterRepeat(array) {
+	let result = 0
+	for (let i = 0; i < array.length; i++) {
+		if(array[i][0] === array[i][array[i].length - 1])
+		result++
+	}
+	return result
+}
+
+// Функція перевірки чи складаються з більше ніш № символів 
+function getNumberMoreXSymbol(array, targetLength) {
+	let result = 0
+	for (let i = 0; i < array.length; i++) {
+		if(array[i].length > targetLength)
+		result++
+	}
+	return result
+}
+
+// Вивидимо на сторінку інфо
+document.write('Номери які були введені:<br>')
+carNumberList.forEach((element, index) => {
+	document.write(`${index + 1}: ${element}<br>`)
+});
+document.write(`
+	Номерів які починаються на букву '${targetLetterNumber}': ${firstLetterRepeatNumber}<br>
+	Номери в яких перша і остання літери співпадають: ${firstAndLastLetterRepeat}<br>
+	Номерів які складаються з більше ніж ${targetLengthSymbol} символів: ${carNumberLength}`)
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

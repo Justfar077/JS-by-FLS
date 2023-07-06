@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 5</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 5</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задача 5. Дано послідовність оцінок учня. Підрахувати кількість:
+				1)	двійок
+				2)	кількість хороших оцінок (добре, відмінно);
+				3)	кількість оцінок, які нижче середнього.
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+// Рішення
+// Призначення змінних
+const userQuantityGrades = parseInt(prompt('Введіть кількість оцінок')) //Введення кількості оцінок
+const studentsLowGrade = 2
+const studentGoodGrade = 4
+const studentVeryGoodGrade = 5
+let studentGrades = getFillingArray(userQuantityGrades) //Виклик функції заповнення масиву
+let averageGrade = getAverageGrade (studentGrades) // Виклик функції середнього значення масиву
+let studentMinValue = getMinValue(studentGrades, studentsLowGrade) // Виклик функції яка повертає кількість двійок
+let studentGoodsGrades = getGoodStudentsGrades(studentGrades, studentGoodGrade, studentVeryGoodGrade) // Виклик функції яка повертає кількість оцінок добре, відмінно
+let studentQuantityLowAverage = getStudentQuantityLowAverage(studentGrades, averageGrade) // Виклик функції пошуку кількість оцінок, які нижче середнього.
+
+// Функція введення масиву
+function getFillingArray (arrLength) {
+		let arr = []
+		for (let i = 0; i < arrLength; i++) {
+		let num = parseInt(prompt(`Введіть ${i+1} оцінку`))
+		arr.push(num)
+	}
+	return arr
+}
+
+// Функція яка повертає кількість двійок
+function getMinValue(array, grade) {
+	let minGrade = 0
+	array.forEach(element => {
+		if(element === grade) minGrade++
+	});
+	return minGrade
+}
+
+// Функція пошуку хороших оцінок (добре, відмінно)
+function getGoodStudentsGrades(array, goodGrade, veryGoodGrade) {
+	let result = 0
+	array.forEach(element => {
+		if(element === goodGrade || element === veryGoodGrade) result++
+	});
+	return result
+}
+
+// Функція пошуку  середнього значення масиву 
+function getAverageGrade (array){
+	let sum = 0
+	for (let i = 0; i < array.length; i++)
+		sum += array[i];
+	let average = sum / array.length
+	return average
+}
+
+// Функція пошуку кількість оцінок, які нижче середнього.
+function getStudentQuantityLowAverage(array, average) {
+	let result = 0
+	array.forEach(element => {
+		if(element < average) result++
+	});
+	return result
+}
+
+// Вивидимо на сторінку інфо
+document.write(`
+	Введені оцінки ${studentGrades}<br>
+	Кількість двійок: ${studentMinValue}<br>
+	Кількість хороших оцінок (добре, відмінно): ${studentGoodsGrades}<br>
+	Середній бал ${averageGrade} <br>
+	Кількість оцінок, які нижче середнього: ${studentQuantityLowAverage}`)
+
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

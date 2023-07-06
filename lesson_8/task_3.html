@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 3</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 3</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задача 3. Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван».
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+					
+// Рішення
+// Призначення змінних
+const studentQuantityNames = prompt('Введіть кількість імен учнів') //Введення кількості імен учнів
+const targetName = prompt('Введіть ім’я, яке ви хочете порахувати скільки разів воно зустрічається:', 'Іван') //Введення імені яке повторюється
+let studentListName = getNameStudentArray(studentQuantityNames) //Виклик функції заповнення масиву
+let repeatsNameStudent = getSameName(studentListName, targetName)
+
+// Функція введення масиву
+function getNameStudentArray (arrLength) {
+		let arr = []
+		for (let i = 0; i < arrLength; i++) {
+		let num = prompt(`Введіть ${i+1} і'мя`)
+		arr.push(num)
+	}
+	return arr
+}
+
+// Функція порівнювання елементів масиву
+function getSameName(array, targetName) {
+	let nameRepeats = 0
+	array.forEach(element => {
+		if (element === targetName)
+			nameRepeats++
+	});
+	return nameRepeats
+}
+
+// Вивидимо на сторінку інфо
+document.write(`
+Кількість Учнів: ${studentQuantityNames}<br>
+Імена які були введені: ${studentListName}<br>
+Кількість разів коли зустрічається ім'я ${targetName} : ${repeatsNameStudent}`)
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 1</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 1</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задача 1. Дано масив, який містить оцінки з К предметів.
+				Знайти середній бал і з’ясувати до якої категорії він відноситься
+				(відмінник, двійочник (має хоча би одну двійку)),
+				хорошист (оцінки добре і відмінно), трійочник(є хоча би одна трійка)
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+// Рішення
+// Призначення змінних
+const userQuantituGrades = parseInt(prompt('Введіть кількість оцінок')) //Введення кількості предметів
+let studetGrades = getFillingArrey(userQuantituGrades) //Виклик функції заповнення масиву
+let averageGrade = getAverageGrade (studetGrades) // Виклик функції середнього значення масиву
+let studentMinValue = getMinValue(studetGrades) // Виклик функції мінімального значення масиву
+let StudentCategory = getStudentCategory(studentMinValue) // Виклик функції відповідності категорії
+
+// Функція введення масиву
+function getFillingArrey (arrLength) {
+		let arr = []
+		for (let i = 0; i < arrLength; i++) {
+		let num = parseInt(prompt(`Введіть ${i+1} оцінку`))
+		arr.push(num)
+	}
+	return arr
+}
+
+// Функція пошуку середнього значення масиву
+function getAverageGrade (array){
+	let sum = 0
+	for (let i = 0; i < array.length; i++)
+		sum += array[i];
+	let average = sum / array.length
+	return average
+}
+
+// Функція пошуку мінімального значення
+function getMinValue(arr) {
+	let min = arr[0]
+	for (let i = 1; i < arr.length; i++) {
+		if (arr[i] < min)
+      min = arr[i]
+	}
+	return min
+}
+
+// Функція вибору категорії
+function getStudentCategory(scores) {
+	let category
+	switch (getMinValue(studetGrades)) {
+		case 1:
+		case 2:
+      category = 'Двійочник'
+      break
+		case 3:
+      category = 'Трійочник'
+      break
+		case 4:
+      category = 'Хорошист'
+      break
+		case 5:
+      category = 'Відмінник'
+      break
+		default:
+		document.write('Помилка, оновіть сторінку та спробуйте ще раз')
+      throw new Error('Некоректна оцінка')
+      break
+	}
+	return category
+}
+// Вивидимо на сторінку інфо
+document.write(`Введені оцінки ${studetGrades}<br>
+	Середній бал ${averageGrade} <br>
+	Найнижчий бал ${studentMinValue} <br>
+	Категорія студента ${StudentCategory}`)
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>
