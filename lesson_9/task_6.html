@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 6</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 6</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				8. Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А»
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+	// Призначення масива
+	let arrayFirst = ['АХ0711КА','ВВ1010АР','АО1532ВА','АН1715КА','АА1212ВА','СА1325КР','АТ1254АН','АР3265ТТ','ВА3265АВ','ВН1312РО']
+	let arraySecond = []
+	//Виведення данних до
+	document.write(`before: ${arrayFirst}<br>`)
+
+	//Перевірка і зміна масива
+	for (const iterator of arrayFirst) {
+		if(iterator[0] === 'А')
+		arraySecond.push(iterator)
+	}
+	//Виведення данних після
+	document.write(`after: ${arraySecond}`)
+					
+	
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

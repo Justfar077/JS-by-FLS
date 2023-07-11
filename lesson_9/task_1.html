@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 1</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 1</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				1. Користувач вводить кількість елементів.
+					Створити масив, що складається з вказаної кількості елементів заповнених нулями.
+					<br>
+				2. Користувач вводить кількість елементів.
+					Створити масив, у якому перша половина заповнена 1-цями,
+					а друга заповнена 7-ками.
+					<br>
+				3. Користувач вводить кількість елементів.
+					Створити масив, у якому перші 5 елементів заповнені 1-цями,
+					а інші до кінця масиву заповнені 7-ками.
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+// 1. Користувач вводить кількість елементів.
+// Створити масив, що складається з вказаної кількості елементів заповнених нулями.
+																	// 1й варіант
+// // Рішення
+// // Призначення змінних
+// const howManyElements = parseInt(prompt('Введіть бажану кількість елементів')) // Введення кількості елементів масива
+// const whatNumberToFill = parseInt(prompt('Якими цифрами заповнити масив', '0')) // Введення бажаних елементів в масиві
+// let fillingElementArray = getFillingArray(howManyElements, whatNumberToFill) // Виклик функції заповнення масиву
+
+// // Функція заповнення масиву
+// function getFillingArray(arrLength, element) {
+// 	let array = []
+// 	for (let i = 0; i < arrLength; i++) {
+// 		array.push(element)
+// 	}
+// 	return array
+// }
+// //Виведення данних
+// document.write(`Кількість елементыв масиву: ${howManyElements}<br>
+// 	Масив заповнений цифрами: ${whatNumberToFill}<br>
+// 	Масив: ${fillingElementArray}`)
+																	// 2й варіант
+
+const howManyElements = parseInt(prompt('Введіть бажану кількість елементів')) // Введення кількості елементів масива
+let fillingElementArray = new Array(howManyElements).fill(0) // Функція заповнення масиву
+document.write(`Масив-1: ${fillingElementArray}<br>`) //Виведення данних
+//-----------------------------------------------------------------------------------------------------
+
+// 2. Користувач вводить кількість елементів.
+// Створити масив, у якому перша половина заповнена 1-цями,
+// а друга заповнена 7-ками.
+
+																		// 1й варіант
+// // Рішення
+// // Призначення змінних
+// const howManyElements = parseInt(prompt('Введіть бажану кількість елементів')) // Введення кількості елементів масива
+// const whatNumberToFillFirst = parseInt(prompt('Якими цифрами заповнити першу частину масива', '1')) // Введення бажаних елементів в масиві першої половини
+// const whatNumberToFillSecond = parseInt(prompt('Якими цифрами заповнити другу частину масива', '7')) // Введення бажаних елементів в масиві другої половини
+// let fillingElementArray = getFillingArray(howManyElements, whatNumberToFillFirst, whatNumberToFillSecond) // Виклик функції заповнення масиву
+
+// // Функція заповнення масиву
+// function getFillingArray(arrLength, elementFirst, elementSecond) {
+// 	let array = []
+// 	let halfArray = arrLength / 2
+// 	for (let i = 0; i < arrLength; i++) {
+// 		if(i < halfArray)
+// 			array.push(elementFirst)
+// 		else
+// 			array.push(elementSecond)
+// 	}
+// 	return array
+// }
+
+// //Виведення данних
+// document.write(`Кількість елементыв масиву: ${howManyElements}<br>
+// 	Перша половина масива заповнена цифрами: ${whatNumberToFillFirst}<br>
+// 	Друга половина масива заповнена цифрами: ${whatNumberToFillSecond}<br>
+// 	Масив: ${fillingElementArray}`)
+
+																		// 2й варіант
+
+	let fillingElementArray1 = new Array(howManyElements).fill(1, 0, (howManyElements / 2)).fill(7, howManyElements / 2) // Функція заповнення масиву
+	document.write(`Масив-2: ${fillingElementArray1}<br>`) //Виведення данних
+
+//-----------------------------------------------------------------------------------------------------
+
+// 3. Користувач вводить кількість елементів.
+// Створити масив, у якому перші 5 елементів заповнені 1-цями,
+// а інші до кінця масиву заповнені 7-ками.
+
+																		// 1й варіант
+// Рішення
+// Призначення змінних
+// const howManyElements = parseInt(prompt('Введіть бажану кількість елементів')) // Введення кількості елементів масива
+// const whatNumberToFillFirst = parseInt(prompt('Якими цифрами заповнити першу частину масива', '1')) // Введення бажаних елементів в масиві першої половини
+// const whatNumberToFillSecond = parseInt(prompt('Якими цифрами заповнити другу частину масива', '7')) // Введення бажаних елементів в масиві другої половини
+// let fillingElementArray = getFillingArray(howManyElements, whatNumberToFillFirst, whatNumberToFillSecond) // Виклик функції заповнення масиву
+
+// // Функція заповнення масиву
+// function getFillingArray(arrLength, elementFirst, elementSecond) {
+// 	let array = []
+// 	for (let i = 0; i < arrLength; i++) {
+// 		if(i < 5)
+// 			array.push(elementFirst)
+// 		else
+// 			array.push(elementSecond)
+// 	}
+// 	return array
+// }
+// //Виведення данних
+// document.write(`Кількість елементыв масиву: ${howManyElements}<br>
+// 	Перша половина масива заповнена цифрами: ${whatNumberToFillFirst}<br>
+// 	Друга половина масива заповнена цифрами: ${whatNumberToFillSecond}<br>
+// 	Масив: ${fillingElementArray}`)
+
+																		// 2й варіант
+
+	let fillingElementArray2 = new Array(howManyElements).fill(1, 0, 5).fill(7, 5) // Функція заповнення масиву
+	document.write(`Масив-3: ${fillingElementArray2}`) //Виведення данних
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

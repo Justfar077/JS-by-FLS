@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 5</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 5</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				7.Дано масив цін. Змінити цей масив так, що на ціни товарів,
+					які більші за 1000 грн. дати 30% знижки.
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+	// Призначення масива
+	let array = [1500,200,90,3500,1200,140,380,820,2445,1505]
+	//Виведення данних до
+	document.write(`before: ${array}<br>`)
+	//Перевірка і зміна масива
+	array.forEach((element, index, array) => {
+		if(element > 1000)
+		array[index] *= 0.7
+	});
+	//Виведення данних після
+	document.write(`after: ${array}`)
+					
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>
