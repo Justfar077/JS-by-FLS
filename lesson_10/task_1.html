@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 1</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 1</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+// Задача. Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000)
+const targetValue = 1000
+const maxValue = 10000
+const minValue = 1
+const arrLength = parseInt(prompt('Введіть кількість елементів масиву', '10'))
+let arrayOfSecurities = getGenerateSecurities (minValue, maxValue,arrLength )
+
+function getGenerateSecurities (minValue, maxValue,arrLength ) {
+	let array = []
+	for (let i = 0; i < arrLength; i++) {
+		const randomNum = minValue + Math.floor(Math.random() * (maxValue - minValue +1))
+		array.push(randomNum)
+	}
+	return array
+}
+
+document.write(`Згенерований масив: ${arrayOfSecurities}<br>`)
+
+//.......................................................................................
+
+// 1)Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн.
+let arrayOver1000 = arrayOfSecurities.filter( price => price > targetValue )
+document.write(`Mасив цін що більші за 1000 грн: ${arrayOver1000}<br>`)
+
+//.......................................................................................
+
+// 2)Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.
+
+let arrayIndexOver1000 = arrayOfSecurities.reduce((res, el, ind) => {
+		if (el > targetValue)
+		res.push(ind)
+	return res
+	},
+[]
+)
+document.write(`Номери елементів масиву більші за 1000 грн.: ${arrayIndexOver1000}<br>`)
+
+//.......................................................................................
+
+// 3)Сформувати список з тих цін, які більші за попереднє значення
+
+let previosNumber = []
+arrayOfSecurities.filter((el, ind, arr) => {
+	let prev = arr[ind +  1]
+	if(prev > el)
+	previosNumber.push(prev)
+})
+document.write(`Ціни що більші за попереднє значення: ${previosNumber}<br>`)
+
+//.......................................................................................
+
+// 4)Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального
+
+let maxOfSecurities = arrayOfSecurities.reduce((prev, el) => el > prev? el : prev)
+document.write(`Максимальне значення масиву: ${maxOfSecurities}<br>`)
+let percentOFMaxPrice = arrayOfSecurities.map(price => ((price / maxOfSecurities) * 100).toFixed(1))
+document.write(`Значення у відсотках стосовно максимального:<br> ${percentOFMaxPrice.join('%, ')}%<br>`)
+
+//.......................................................................................
+
+// 5)Підрахувати кількість змін цін
+
+let howPriceChange = arrayOfSecurities.reduce((prev, el) => (prev !== el? prev + 1: prev),-1)//<-Якщо тут ставити нуль,
+//  тоді він починає враховувати перший елемент і наче не коректне значення виходе.
+//  Вихід є в додатковій глобальній змінній і туди плюсувати значенняю.
+document.write(`Kількість змін цін: ${howPriceChange}<br>`)
+
+
+//.......................................................................................
+
+// 6)Визначити, чи є ціна, що менше 1000
+if (arrayOfSecurities.some(price => price < targetValue))
+	document.write(`Є ціни менша за 1000<br>`)
+else
+	document.write(`Немає цін менше за 1000<br>`)
+
+//.......................................................................................
+
+// 7)Визначати, чи усі ціни більше за 1000
+if (arrayOfSecurities.every(price => price > targetValue))
+	document.write(`Усі ціни більше за 1000<br>`)
+else
+	document.write(`Не усі ціни більше за 1000<br>`)
+
+
+//.......................................................................................
+
+// 8)Підрахувати кількість цін, що більше за 1000
+
+let quantityPriceOver1000 = arrayOfSecurities.reduce((prev, el) => (el > targetValue? prev + 1 : prev),0)
+document.write(`Kількість цін, що більше за 1000: ${quantityPriceOver1000}<br>`)
+
+//.......................................................................................
+
+// 9)Підрахувати суму цін, що більше за 1000
+
+let sumPriceOver1000 = arrayOfSecurities.reduce((prev, el) => (el > targetValue? prev + el: prev),0)
+document.write(`Cумма цін, що більше за 1000: ${sumPriceOver1000}<br>`)
+
+//.......................................................................................
+
+// 10)Знайти першу ціну, що більше за 1000
+
+let firstPriceOver1000 = arrayOfSecurities.find(price => price > targetValue)
+document.write(`Перша ціна, що більше за 1000: ${firstPriceOver1000}<br>`)
+
+//.......................................................................................
+
+// 11)Знайти індекс першої ціни, що більше за 1000
+
+let firstIndexOver1000 = arrayOfSecurities.findIndex(price => price > targetValue)
+document.write(`Індекс першої ціни, що більше за 1000: ${firstIndexOver1000}<br>`)
+
+//.......................................................................................
+
+// 12)Знайти останню ціну, що більше за 1000
+
+let lastPriceOver1000 = arrayOfSecurities.findLast(price => price > targetValue)
+document.write(`Остання ціна, що більше за 1000: ${lastPriceOver1000}<br>`)
+
+//.......................................................................................
+
+// 13)Знайти індекс останньої ціни, що більше за 1000
+
+let lastIndexOver1000 = arrayOfSecurities.findLastIndex(price => price > targetValue)
+document.write(`Індекс останньої ціни, що більше за 1000: ${lastIndexOver1000}<br>`)
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>
