@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 2</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 2</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задача 2. Дано інформацію про прибуток К магазинів протягом тижня. Знайти :
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+					
+// Призначення змінних
+const maxValue = 400
+const minValue = 1
+const arrRowLength = 5
+const arrColumnLength = 7
+// const arrRowLength = parseInt(prompt('Введіть кількість рядків', '6'))
+// const arrColumnLength = parseInt(prompt('Введіть кількість колонок', '6'))
+let newTable = getGenerateTable (arrRowLength, arrColumnLength, minValue, maxValue)
+
+// Функція формування одновимірного масиву з рандомним числом
+function getGenerateColumn (minValue, maxValue,arrColumnLength) {
+	let array = []
+	for (let row = 0; row < arrColumnLength; row++) {
+		let randomNum = minValue + Math.floor(Math.random() * (maxValue - minValue +1))
+		array.push(randomNum)
+	}
+	return array
+}
+// Функція формквання двовимірного масиву
+function getGenerateTable (arrRowLength, arrColumnLength, minValue, maxValue) {
+	let table = []
+	for (let col = 0; col < arrRowLength; col++) {
+		let randomRow = getGenerateColumn (minValue, maxValue,arrColumnLength)
+		table.push(randomRow)
+	}
+	return table
+}
+
+console.log(newTable)
+
+// 1) загальний прибуток кожного масиву за тиждень;
+
+function getSumProfitStoreOfWeek(array) {
+	let result = []
+	for (let i = 0; i < array.length; i++) {
+		let sumArr = array[i].reduce((prev, el) => prev + el)
+		result.push(sumArr)
+	}
+	return result
+}
+let ProfitStoresOfWeek = getSumProfitStoreOfWeek(newTable)
+document.write(`Загальний прибуток кожного магазину за тиждень: ${ProfitStoresOfWeek}<br>`)
+
+
+// 2) загальний прибуток усіх магазинів по дням 
+// (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.);
+
+function getSumProfitDayOfWeek (array) {
+	let result = []
+	for (let i = 0; i < array[0].length; i++) {
+		let sum = 0
+		for (let j = 0; j < array.length; j++) {
+			sum += array[j][i]
+		}
+		result.push(sum)
+	}
+	return result 
+}
+let sumProfitDayOfWeek = getSumProfitDayOfWeek (newTable)
+document.write(`Загальний прибуток усіх магазинів по дням: ${sumProfitDayOfWeek}<br>`)
+
+// 3) загальний прибуток за робочі дні
+
+function getSumProfitWorkingDays (array) {
+	let sum = array[0][2]
+	for (let i = 0; i < array.length; i++) {
+		for (let j = 0; j < 5; j++) {
+			sum += array[i][j]
+		}
+	}
+	return sum
+}
+let sumProfitWorkingDays = getSumProfitWorkingDays (newTable)
+document.write(`Загальний прибуток усіх магазинів за робочі дні: ${sumProfitWorkingDays}<br>`)
+
+// 4) загальний прибуток за вихідні дні
+
+function getSumProfitDayOff (array) {
+	let sum = 0
+	for (let i = 0; i < array.length; i++) {
+		for (let j = 5; j < array[i].length; j++) {
+			sum += array[i][j]
+		}
+	}
+	return sum
+}
+let sumProfitDayOff = getSumProfitDayOff (newTable)
+document.write(`Загальний прибуток усіх магазинів за вихідні дні: ${sumProfitDayOff}<br>`)
+
+// 5) максимальний прибуток за середу
+
+function getMaxProfitOnWednesday (array) {
+	let sum = 0
+	for (let i = 0; i < array.length; i++) {
+		for (let j = 2; j < 3; j++) {
+			if (array[i][j] > sum)
+			sum = array[i][j]
+		}
+	}
+	return sum
+}
+let maxProfitOnWednesday = getMaxProfitOnWednesday (newTable)
+document.write(`Максимальний прибуток за середу: ${maxProfitOnWednesday}<br>`)
+
+// 6) сформувати загальний список (одновимірний масив) зі значенням, які що більші за 200
+
+function getNumsMore200 (array) {
+   let result = []
+   for (let i = 0; i < array.length; i++) {
+         for (let j = 0; j < array[i].length; j++) {
+            if (array[i][j] > 200) {
+               result.push(array[i][j])
+            }
+         }
+   }
+   return result
+}
+
+let numsMore200 = getNumsMore200 (newTable)
+document.write(`Загальний список зі значенням, які що більші за 200: ${numsMore200}<br>`)
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

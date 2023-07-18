@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 1</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 1</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задача 1. Знайти суми елементів у вказаній області
+				(масиви розділені на 4 рівні частини -  не звертаємо увагу на криві малюнки
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+// Призначення змінних
+const maxValue = 10
+const minValue = 1
+const arrRowLength = 6
+const arrColumnLength = 6
+// const arrRowLength = parseInt(prompt('Введіть кількість рядків', '6'))
+// const arrColumnLength = parseInt(prompt('Введіть кількість колонок', '6'))
+let newTable = getGenerateTable (arrRowLength, arrColumnLength, minValue, maxValue)
+
+// Функція формування одновимірного масиву з рандомним числом
+function getGenerateColumn (minValue, maxValue,arrColumnLength) {
+	let array = []
+	for (let i = 0; i < arrColumnLength; i++) {
+		let randomNum = minValue + Math.floor(Math.random() * (maxValue - minValue +1))
+		array.push(randomNum)
+	}
+	return array
+}
+// Функція формування двовимірного масиву
+function getGenerateTable (arrRowLength, arrColumnLength, minValue, maxValue) {
+	let table = []
+	for (let col = 0; col < arrRowLength; col++) {
+		let randomRow = getGenerateColumn (minValue, maxValue,arrColumnLength)
+		table.push(randomRow)
+	}
+	return table
+}
+
+console.log(newTable)
+// Функція пошуку сум по елементам
+function getSumSquare(newTable, startRow, startColumn, endRow, endColumn) {
+	let sum = 0
+	for (let i = startRow; i < endRow; i++) {
+		for (let j = startColumn; j < endColumn; j++) {
+			sum += newTable[i][j]
+		}
+	}
+	return sum
+}
+
+// 1) Пошук сумми лівого верхнього квадрату
+
+// let sumUpLeftSquare = getSumSquare(newTable, 0, 0, 2, 2)
+let sumUpLeftSquare = getSumSquare(newTable, 0, 0, newTable.length / 2, newTable.length / 2)
+document.write(`Left Up: ${sumUpLeftSquare}<br>`)
+
+// 2) Пошук сумми правого верхнього квадрату
+
+// let sumUpRightSquare = getSumSquare(newTable, 0, 3, 2, 5)
+let sumUpRightSquare = getSumSquare(newTable, 0, newTable.length / 2, newTable.length / 2, newTable.length)
+document.write(`Right Up: ${sumUpRightSquare}<br>`)
+
+// 3) Пошук сумми лівого нижнього квадрату
+
+// let sumDownLeftSquare = getSumSquare(newTable, 3, 0, 5, 2)
+let sumDownLeftSquare = getSumSquare(newTable, newTable.length / 2, 0, newTable.length, newTable.length / 2)
+document.write(`Left Down: ${sumDownLeftSquare}<br>`)
+
+// 4) Пошук сумми правого нижнього квадрату
+
+// let sumDownRightSquare = getSumSquare(newTable, 3, 3, 5, 5)
+let sumDownRightSquare = getSumSquare(newTable, newTable.length / 2, newTable.length / 2, newTable.length, newTable.length)
+document.write(`Right Down: ${sumDownRightSquare}<br>`)
+
+// 5) Суму парних рядків
+
+function getSumEvenRows(array) {
+	let sum = 0
+	for (let i = 0; i < array.length; i++) {
+		if(i % 2 !== 0){
+					for (let j = 0; j < array.length; j++) {
+				sum += array[i][j]
+			}
+		}
+	}
+	return sum
+}
+let sumEvenRows = getSumEvenRows(newTable)
+document.write(`Sum even rows ${sumEvenRows}<br>`)
+
+// 6) Суму непарних стовпців
+
+function getSumOddColumns (array) {
+	let sum = 0
+	for (let i = 0; i < array.length; i++) {
+		for (let j = 0; j < array.length; j++) {
+			if (j % 2 === 0) {
+				sum += array[i][j]
+			}
+		}
+	}
+	return sum
+}
+let SumOddColumns = getSumOddColumns(newTable)
+document.write(`Sum odd columns ${SumOddColumns}<br>`)
+
+// 7) У парних рядках – непарні стовпці, у непарних – парні.
+
+function getSumEvenRowsAndOddColumns (array) {
+	let sum = 0
+	for (let i = 0; i < array.length; i++) {
+		if(i % 2 !== 0){
+			for (let j = 0; j < array.length; j++) {
+				if (j % 2 === 0) {
+					sum += array[i][j]
+				}
+			}
+		}
+	}
+	return sum
+}
+let sumEvenRowsAndOddColumns = getSumEvenRowsAndOddColumns(newTable)
+document.write(`Sum even rows - odd columns ${sumEvenRowsAndOddColumns}<br>`)
+
+function getSumOddRowsAndEvenColumns (array) {
+	let sum = 0
+	for (let i = 0; i < array.length; i++) {
+		if(i % 2 === 0){
+			for (let j = 0; j < array.length; j++) {
+				if (j % 2 !== 0) {
+					sum += array[i][j]
+				}
+			}
+		}
+	}
+	return sum
+}
+let sumOddRowsAndEvenColumns = getSumOddRowsAndEvenColumns(newTable)
+document.write(`Sum odd rows - even columns ${sumOddRowsAndEvenColumns}<br>`)
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>
