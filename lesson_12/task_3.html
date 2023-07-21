@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 3</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 3</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+					
+// Введення змінних
+const arrayLength = 30
+const minNum = 1
+const maxNum = 9
+
+// функції яка створює масив данних
+function createArray (length, minNum, maxNum) {
+	let result = []
+	for (let i = 0; i < length; i++) {
+		const randomNum = minNum + Math.floor(Math.random() * (maxNum - minNum +1))
+		result.push(randomNum)
+	}
+	return result
+}
+// функції яка змінює місцями елементи масиву
+const swap = (arr, a, b) => {
+   const c = arr[a]
+   arr[a] = arr[b]
+   arr[b] = c
+}
+
+// Виклик функції яка створює масив данних
+let newArray = createArray (arrayLength, minNum, maxNum)
+console.log(newArray)
+
+// Задача 3. Дано масив 30 випадкових цілих чисел. 
+// Підрахувати скільки було обмінів під час сортування включеннями.
+// Задача 4. Для розглянутих методів сортування спробувати вивести етапи 
+// сортування шляхом виведення відповідних таблиць за зразком.
+// Тобто кожного разу після обміну елементів вивести поточний стан масиву на екран.
+
+
+let newArrayІnclusion = [...newArray]
+document.write(`Original Array ${newArrayІnclusion}<br>`)
+console.log(newArrayІnclusion)
+let counterІnclusion = 0
+let index
+let prev
+for (let i = 1; i < newArrayІnclusion.length; i++) {
+	index = newArrayІnclusion[i]
+	prev = i - 1
+	while (prev >= 0 && newArrayІnclusion[prev] > index) {
+		newArrayІnclusion[prev + 1] = newArrayІnclusion[i]
+		prev = prev - 1
+		counterІnclusion++
+		document.write(newArrayІnclusion + "<br>")
+	}
+	newArrayІnclusion[prev + 1] = index
+}
+console.log(counterІnclusion)
+console.log(newArrayІnclusion)
+
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

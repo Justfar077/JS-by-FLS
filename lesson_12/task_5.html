@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 5</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 5</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+		
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+// Задача 6. Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити,
+// чи є у масиві ім’я довжиною 5 символів і під яким індексом.
+
+let names = ['John','Paul','Olga','Andrew','Abrams','Abba','Peter','Tina','Jack','Peter',]
+
+const targetNameLength = 5;
+
+      document.write(`Початковий масив = [${names}] <br>`);
+
+      const namesSorted = names.sort();
+
+      function getIndName5(array, nameLength) {
+			let start = 0;
+			let end = array.length - 1;
+		while (start <= end) {
+         const middle = Math.floor((start + end) / 2);
+         const name = array[middle];
+         if (name.length === nameLength) return middle;
+         if (name.length < nameLength) start = middle + 1;
+         if (name.length > nameLength) end = middle - 1;
+		}
+			return -1;
+      }
+
+      const indexSearchName = getIndName5(namesSorted, targetNameLength)
+
+      document.write(`Відсортований масив : [${namesSorted}] <br>`);
+
+      if (indexSearchName !== -1) {
+		document.write(
+         `Ім'я з довжиною ${targetNameLength} знаходиться під індексом ${indexSearchName}: ${namesSorted[indexSearchName]}`
+		);
+      } else {
+			document.write(`Ім'я з довжиною ${targetNameLength} не знайдено у масиві.`);
+      }
+					
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>
