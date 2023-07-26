@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 1</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 1</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задача 1. Нехай , <img src="./img/01.jpg" alt="X"> . Визначити X10. Розв’язати з використанням рекурсивних і нерекурсивних алгоритмів
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+
+// З використанням рекурсивного алгоритма
+function getExampleSolutionFirst(num) {
+   if (num === 0) return 1
+   else
+   return getExampleSolutionFirst(num - 1) + 2 * num
+}
+console.log(getExampleSolutionFirst(10))
+
+// З використанням нерекурсивного алгоритма
+function getExampleSolutionSecond(num) {
+   if (num === 0) return 1
+   let res = 1
+   for (let j = 1; j <= num; j++) {
+	res = res + 2 * j
+   }
+   return res
+}
+console.log(getExampleSolutionSecond(10))
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

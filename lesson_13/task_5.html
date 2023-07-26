@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 5</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 5</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задача 5. Тренажер додавання. Кожні 10 секунд користувачу задають
+				випадковий приклад з додавання двох цифр і робиться перевірка.
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+
+// Генерування випадкового числа
+function getRandomNum(min, max) {
+	return min + Math.floor(Math.random() * (max - min + 1))
+}
+// Функція створення запиту у користувача
+function generateQuestion(min = 0, max = 10) {
+   let num1 = getRandomNum(min, max)
+   let num2 = getRandomNum(min, max)
+   let makeQuestion = parseInt(prompt(`Розв'яжіть приклад ${num1} * ${num2}=...`, 0))
+   checkQuestion(num1, num2, makeQuestion)
+}
+// Функція перевірки рівняння
+function checkQuestion(num1, num2, userAnswer) {
+	let result = num1 * num2
+   if (userAnswer === num1 * num2) alert('Вітаю, правильно')
+   else alert(`Не вірно, відповідь: ${result}`)
+   setTimeout(generateQuestion, 10000, 1, 10);
+}
+// Виклик функції таймаут
+setTimeout(generateQuestion, 10000, 1, 10);
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

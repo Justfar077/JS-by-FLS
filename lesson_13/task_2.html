@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 2</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 2</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задача 2. Реалізувати бінарний пошук (розглядали на попередніх уроках)
+				з використанням рекурсивного алгоритму.
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+// Введення змінних
+const arrayLength = 15
+const minNum = 1
+const maxNum = 20
+
+// Виклик функції яка створює масив данних
+let newArray = createArray (arrayLength, minNum, maxNum)
+console.log(newArray)
+
+// функції яка створює масив данних
+function createArray (length, minNum, maxNum) {
+	let result = []
+	for (let i = 0; i < length; i++) {
+		const randomNum = minNum + Math.floor(Math.random() * (maxNum - minNum +1))
+		result.push(randomNum)
+	}
+	return result
+}
+// Виведення масиву
+document.write(newArray + '<br>')
+// Сортування масиву
+newArray.sort((a, b) => { return a - b })
+// Виведення відсортованого масиву
+document.write(newArray + '<br>')
+
+// Бінарний пошук з використанням рекурсивного алгоритму.
+function binaryNumberSearch(a, searchEl, start, end) {
+   let middle = Math.floor((start + end) / 2)
+   if (start <= end) {
+      if (a[middle] === searchEl) return middle
+      if (a[middle] < searchEl) return binaryNumberSearch(a, searchEl, middle + 1, end)
+      if (a[middle] > searchEl) return binaryNumberSearch(a, searchEl, start, middle - 1)
+   }
+   return -1
+}
+// Виклик функції бінарного пошуку з використанням рекурсивного алгоритму.
+let searchResult = binaryNumberSearch(newArray, 5, 0, newArray.length - 1)
+// Виведення результату
+document.write(searchResult)
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>
