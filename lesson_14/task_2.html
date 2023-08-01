@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 2</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 2</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задача 2. Розробити функцію, у яку передають об’єкт (день, місяць, рік).
+				Визначити, який буде рік через N місяців.
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+					
+let date = {
+   day: 1,
+   months: 8,
+   year: 2023,
+}
+
+function getTargetYear(date, userMonths) {
+   return (Math.floor((date.months - 1 + userMonths) / 12)) + date.year
+}
+
+const userMonths = parseInt(prompt('Вкажіть кількість місяців'))
+const shiftedYear = getTargetYear(date, userMonths)
+alert(`Через ${userMonths} місяців буде ${shiftedYear} рік`)
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

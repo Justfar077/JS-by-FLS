@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 1</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 1</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задача 1. Описати масив об’єктів – сайтів розроблених компанією з такими властивостями
+				назва компанії на час розробки (назву періодично змінюють)
+				власник компанії
+				споснсори (масив спонсорів)
+				* прізвище спонсора
+				* ім’я  спонсора
+				* сума вкладень спонсора
+				рік випуску
+				вартість сайту
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+let websitesCompany = [
+	{
+		name: 'Company A',
+		owner: 'Ivanov',
+		sponsors:[
+					{
+						lastName: "Kulik",
+						firstName: "Petro",
+						investment: 5000, 
+					},
+					{
+						lastName: "Sidorov",
+						firstName: "Anton",
+						investment: 2500, 
+					}
+				],
+		years: 2005,
+		price: 15650,
+	},
+	{
+		name: 'Company B',
+		owner: 'Khomenko',
+		sponsors:[
+					{
+						lastName: "Savin",
+						firstName: "Vitaliy",
+						investment: 6000000, 
+					},
+					{
+						lastName: "Juchenko",
+						firstName: "Nikolay",
+						investment: 4500, 
+					},
+					{
+						lastName: "Skubak",
+						firstName: "Serhiy",
+						investment: 1500, 
+					},
+				],
+		years: 2010,
+		price: 42150,
+	},
+	{
+		name: 'Company C',
+		owner: 'Golota',
+		sponsors:[
+					{
+						lastName: "Guk",
+						firstName: "Vladimir",
+						investment: 2000000, 
+					},
+					{
+						lastName: "Zubkov",
+						firstName: "Evhen",
+						investment: 3500, 
+					},
+					{
+						lastName: "Yakimchuk",
+						firstName: "Artem",
+						investment: 7200, 
+					}
+				],
+		years: 2007,
+		price: 37000,
+	},
+	{
+		name: 'Company D',
+		owner: 'Serha',
+		sponsors:[
+					{
+						lastName: "Golovach",
+						firstName: "Ivan",
+						investment: 4200, 
+					},
+					{
+						lastName: "Evdokimov",
+						firstName: "Oleg",
+						investment: 3700, 
+					},
+					{
+						lastName: "Pinchuk",
+						firstName: "Aleksey",
+						investment: 5200, 
+					}
+				],
+		years: 2012,
+		price: 25000,
+	},
+	{
+		name: 'Company E',
+		owner: 'Popov',
+		sponsors:[
+					{
+						lastName: "Derkach",
+						firstName: "Aleksey",
+						investment: 4500, 
+					},
+					{
+						lastName: "Krasovskiy",
+						firstName: "Kiril",
+						investment: 2700, 
+					},
+				],
+		years: 2012,
+		price: 9200,
+	},
+]
+
+// 1) загальну вартість усіх сайтів
+
+let sumOfWebsites = websitesCompany.reduce((prev,el)=>prev + el.price, 0)
+document.write(`Загальна вартість усіх сайтів: ${sumOfWebsites}<br>`)
+
+// 2) кількість сайтів, що було зроблено між 2000 та 2009 рр.
+
+let quantityOfWebsitesBetween2000And2009 = websitesCompany.reduce(
+	(prev,el)=>el.years >= 2000 && el.years <= 2009? prev + 1 : prev, 0)
+document.write(`Kількість сайтів, що було зроблено між 2000 та 2009 рр: ${quantityOfWebsitesBetween2000And2009}<br>`)
+
+// 3) кількість сайтів, де сума спонсорських вкладень була більшою за 100000
+
+function getQuantityOfWebsitesInvestmentMore100000(websitesCompany){
+	let counter = 0
+	websitesCompany.forEach(element => {
+		let totalContribution = element.sponsors.reduce((prevSum, sponsor) =>
+			prevSum + sponsor.investment, 0)
+				if (totalContribution > 100000) {
+					counter++
+				}
+	});
+	return counter
+}
+document.write(`Kількість сайтів, де сума спонсорських вкладень була більшою за 100000: ${getQuantityOfWebsitesInvestmentMore100000(websitesCompany)}<br>`)
+
+// 4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+
+const allSponsors = websitesCompany.flatMap(website => website.sponsors.map(sponsor => ({
+	sponsorsName: sponsor.firstName,
+	sponsorsLastName: sponsor.lastName
+})));
+document.write('Загальний список усіх спонсорів: об’єкт у консолі' + '<br>')
+console.log(allSponsors)
+
+// 5) знайти рік, коли прибуток був найбільшим
+
+let getYearWIthMaxProfit = (websites) => {
+					let max = 0
+					let yearWithMaxProfit
+					for (let i = 0; i < websites.length; i++) {
+						if (max < websites[i].price) {
+							max = websites[i].price
+							yearWithMaxProfit = websites[i].years
+						}
+					}
+					return yearWithMaxProfit
+				}
+document.write(`Pік, коли прибуток був найбільшим: ${getYearWIthMaxProfit(websitesCompany)} <br>`)
+
+// 6) упорядкувати список за спаданням прибутку
+
+function swap(arr, a, b) {
+	let temp = arr[a]
+	arr[a] = arr[b]
+	arr[b] = temp
+}
+let sortSitesAccordingToDecreaseInProfit = (websites) => {
+	let profitArr = []
+	for (let i = 0; i < websites.length; i++) {
+		profitArr.push(websites[i].price)
+	}
+	for (let i = 0; i < profitArr.length; i++) {
+		let minIndex = i
+		for (let j = i + 1; j < profitArr.length; j++) {
+			if (profitArr[j] > profitArr[minIndex]) {
+				minIndex = j
+			}
+		}
+		if (i !== minIndex) {
+			swap(profitArr, i, minIndex)
+			swap(websites, i, minIndex)
+		}
+	}
+	return websites
+}
+document.write('Упорядкуваний список за спаданням прибутку:  об’єкт у консолі' + '<br>')
+console.log(sortSitesAccordingToDecreaseInProfit(websitesCompany))
+
+// 7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+
+let costLess10000 = websitesCompany.filter(website => website.price < 10000)
+console.log(costLess10000)
+let costMore10000 = websitesCompany.filter(website => website.price >= 10000)
+console.log(costMore10000)
+document.write('Cписки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000:  об’єкт у консолі' + '<br>')
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>
