@@ -219,11 +219,20 @@ console.log(sortSitesAccordingToDecreaseInProfit(websitesCompany))
 
 // 7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
 
-let costLess10000 = websitesCompany.filter(website => website.price < 10000)
-console.log(costLess10000)
-let costMore10000 = websitesCompany.filter(website => website.price >= 10000)
+//let costLess10000 = websitesCompany.filter(website => website.price < 10000)
+//console.log(costLess10000)
+//let costMore10000 = websitesCompany.filter(website => website.price >= 10000)
+//console.log(costMore10000)
+//document.write('Cписки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000:  об’єкт у консолі' + '<br>')
+
+let costLess10000 = []
+let costMore10000 = []
+for (const site of websitesCompany) {
+	if(site.price < 10000) costLess10000.push(JSON.parse(JSON.stringify(site)))
+	else if(site.price >= 10000) costMore10000.push(JSON.parse(JSON.stringify(site)))
+}
 console.log(costMore10000)
-document.write('Cписки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000:  об’єкт у консолі' + '<br>')
+console.log(costLess10000)
 
 				</script>
 			</p>
