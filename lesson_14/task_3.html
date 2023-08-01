@@ -502,14 +502,28 @@ console.log(availableProduct)
 // які міститимуть тільки ідентифікатор товару (id), нову ціну (price),
 // стару ціну (old_price), та ціну у доларах (usd_price)
 
-let newArrProduct = dataList.filter(cart => cart.sell_status === 'available').map(cart => ({
-   id: cart.id,
-   price: cart.price,
-   old_price: cart.old_price,
-   usd_price: cart.usd_price
-}))
+//let newArrProduct = dataList.filter(cart => cart.sell_status === 'available').map(cart => ({
+//   id: cart.id,
+//   price: cart.price,
+//   old_price: cart.old_price,
+//   usd_price: cart.usd_price
+//}))
 document.write('Hовий список об`єктів тільки доступних для продажу товарів: масив у консолі' + '<br>')
-console.log(newArrProduct)
+//console.log(newArrProduct)
+
+let availableProductsList = []
+   for (const product of dataList) {
+   if (product.sell_status === 'available') {
+      const { id, price, old_price, usd_price } = product
+      availableProductsList.push({
+         id,
+         price,
+         old_price,
+         usd_price,
+         })
+      }
+   }
+console.log(availableProductsList)
 
 
 				</script>
