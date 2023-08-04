@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 1</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 1</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задача 1. Створити об’єкт «Тир». У масиві зберігаються 1,
+				якщо у цьому квадраті є заєць і 0 в іншому випадку.
+				<img src="./img/01.jpg" alt="">
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+class Tir {
+   constructor(hareNum, gameFieldSize) {
+      this.hareNum = hareNum
+      this.gameFieldSize = gameFieldSize
+      this.gameField = this.generateGameField(this.gameFieldSize)
+   }
+
+   getRandomNumber(minNumber = 0, maxNumber = this.gameFieldSize - 1) { 
+      return minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1))
+   }
+
+   generateGameField(gameFieldSize) {
+      let gameField = new Array(gameFieldSize),
+      rabbitsCounter = 0,
+      rabbitPosition
+      gameField.fill(0)
+
+      while (rabbitsCounter < this.rabbitsNumber){
+         rabbitPosition = this.getRandomNumber()
+         if (gameField[rabbitPosition] === 0){ 
+         gameField[rabbitPosition] = 1
+            rabbitsCounter++ }
+         }
+         return gameField
+      }
+
+   shot(shotIndex){            
+         if (this.gameField[shotIndex] === 1){
+            this.gameField[shotIndex] = 0
+            return true
+            } else return false
+      }
+
+   playGame(){
+      let rabbitsCounter = 0,
+      gameFieldSizeForUser = this.gameField.length - 1
+
+      while (rabbitsCounter < this.rabbitsNumber){
+			let shotIndex = parseInt(prompt(`Будь ласка введіть координату пострілу (цифра від 0 до ${gameFieldSizeForUser})`))
+         if (shotIndex < 0 || shotIndex > gameFieldSizeForUser || !shotIndex){
+				let refresh = confirm('Ви ввели некоректні координати, бажаєте почати спочатку?')
+				if (refresh) gameTir.playGame()
+				throw new Error('Ви ввели некоректні координати')
+         } else if (this.shot(shotIndex)){
+            rabbitsCounter++
+            alert(`Ви влучили, залишилось ${this.rabbitsNumber - rabbitsCounter} зайців`)
+            } else alert ('Ви не влучили, спробуйте ще')
+         }
+      }
+   }
+
+		let userPlayingFieldSize = parseInt(prompt('Введіть розмір ігрового поля', '10'))
+		let userQuantityHares = parseInt(prompt('Введіть кількість зайців', '3'))
+
+      let gameTir = new Tir(userQuantityHares, userPlayingFieldSize)
+      gameTir.playGame()
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

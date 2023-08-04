@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 5</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 5</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задача 5. Розробити клас «Керівник танців»
+				<img src="./img/05.jpg" alt="">
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+let girlsTeam = ['Марічка', 'Тетяна', 'Анна', 'Василіна', 'Олександра', 'Леся', 'Віра', 'Надія', 'Любов', 'Зоряна', ]
+let boysTeam = ['Евген', 'Олексій', 'Петро', 'Олександр', 'Дмитро', 'Андрій', 'Іван', 'Павло', 'Назар', 'Кирило', ]
+
+class BossOfDances {
+	constructor(girlsTeam, boysTeam){
+		this.girlsTeam = girlsTeam
+		this.boysTeam = boysTeam
+	}
+	getRandomNumber(maxNumber, minNumber = 0) { 
+      return minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1))
+   }
+
+	getRandomBoyName(){
+		return this.boysTeam[this.getRandomNumber(this.boysTeam.length - 1)]
+	}
+
+	getRandomGirlName(){
+		return this.girlsTeam[this.getRandomNumber(this.girlsTeam.length - 1)]
+	}
+
+	getCoupleForDancing(){
+		alert(`${this.getRandomBoyName()} танцює з ${this.getRandomGirlName()}`)
+	}
+
+	getMessage(){
+		setInterval(() => {
+			this.getCoupleForDancing()
+		}, 5000)
+	}
+
+}
+
+let danceParty = new BossOfDances(girlsTeam, boysTeam)
+danceParty.getMessage()
+
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

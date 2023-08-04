@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 3</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 3</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задача 3. Розробити клас MultChecker для перевірки таблиці множення
+				<img src="./img/03.jpg" alt="">
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+					
+					
+class MultChecker{
+   constructor(checkingNumber){
+      this.checkingNumber = checkingNumber
+      this.correctAnswers = 0
+      this.inCorrectAnswers = 0
+   }
+
+   getRandomNumber(minNumber = 1, maxNumber = 10) { 
+      return minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1))
+   }
+   
+   checkingAnswer(userAnswer){
+      const multiplication = this.checkingNumber * this.secondNumberToMult
+
+      if (userAnswer === multiplication){
+         this.correctAnswers++
+         return true
+      } 
+      else{
+         this.inCorrectAnswers++
+         return false
+         } 
+      }
+
+   render(){
+      let userAnswer
+
+      do {
+         this.secondNumberToMult = this.getRandomNumber() 
+         userAnswer = parseInt(prompt(`Скільки буде ${this.checkingNumber} * ${this.secondNumberToMult} ?`)) 
+         if (this.checkingAnswer(userAnswer)){
+         alert(`Відповідь вірна, правильних відповідей: ${this.correctAnswers}`)
+         }
+         else {
+				alert(`Відповідь не вірна, не правильних відповідей: ${this.inCorrectAnswers}`)
+         }
+            } while(userAnswer) 
+         }
+
+      }
+
+let userQuestionNumber = parseInt(prompt('Введіть число від 2 до 9', '5'))
+let multCheckerGame = new MultChecker(userQuestionNumber)
+multCheckerGame.render()
+
+document.write(`Правильних відповідей: ${multCheckerGame.correctAnswers}<br>`)
+document.write(`Не правильних відповідей: ${multCheckerGame.inCorrectAnswers}`)
+
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

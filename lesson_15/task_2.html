@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 2</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 2</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задача 2. Створити об’єкт «Авто». 
+				<img src="./img/02.jpg" alt="">
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+class Car {
+	constructor(brand, sizeTank, remainingFuel, numberOfSeats, numberOfPassengers){
+		this.brand = brand
+		this.sizeTank = sizeTank
+		this.remainingFuel = remainingFuel
+		this.numberOfSeats = numberOfSeats
+		this.numberOfPassengers = numberOfPassengers
+	}
+
+   refillingCar(quantityLiters){
+      if (this.sizeTank < this.remainingFuel + quantityLiters){
+			alert('Кількість пального більша за розмір паливного бака')
+			throw new Error ('Кількість пального більша за розмір паливного бака')
+		}
+      this.remainingFuel += quantityLiters
+   }
+
+	toString(){
+      return `В автомобілі ${this.numberOfPassengers} пасажирів, та ${this.remainingFuel} літрів палива`
+   }
+
+   addPassengers (newPassengersNumber){
+		if (this.numberOfSeats < this.numberOfPassengers + newPassengersNumber){
+			alert('Пасажирів більше ніж вільних місць')
+			throw new Error (`Пасажирів більше ніж вільних місць`)
+		}
+      this.numberOfPassengers += newPassengersNumber
+   }
+
+   disembarkationOfPassengers(passengersDecreasingNumber){
+      if (this.numberOfPassengers < passengersDecreasingNumber){
+			alert('Кількість перевищює наявність пасажирів')
+			throw new Error ('Кількість перевищює наявність пасажирів')
+		}
+      this.numberOfPassengers -= passengersDecreasingNumber
+   }
+
+}
+
+let myCar = new Car('Suzuki', 54, 15, 5, 1)
+
+document.write(`Початкове значення: ${myCar}<br>`)
+myCar.addPassengers(parseInt(prompt('Скільки пасажирів додати?')))
+myCar.disembarkationOfPassengers(parseInt(prompt('Скільки пассажирів висадити')))
+myCar.refillingCar(parseFloat(prompt('Введіть кількість палива для заправки')))
+document.write(`Кінцеве значення: ${myCar}<br>`)
+
+
+
+
+
+
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

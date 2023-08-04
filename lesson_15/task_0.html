@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 0</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 0</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задача 0. Дано два об’єкта. Обидва містять масив цілих чисел.
+				При цьому у одному з них є функція знаходження суми,
+				а у іншому – функція для знаходження добутку тих,
+				які знаходяться між заданими мінімальним і максимальних значенням.
+				Використати обидва методи стосовно обидвох об’єктів (використати call, apply)
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+// Перший об’єкт
+let firstObj = {
+	arr: [5, 10, 71, 9, 12, 3, 52, 8, 43, 9],
+	getSum: function () {
+		return this.arr.reduce((prev, el) => prev + el, 0)
+	}
+}
+// Другий  об’єкт
+let secondObj = {
+	arr: [15, 121, 72, 9, 12, 3, 15, 82, 4, 9],
+	getProd: function(min, max) {
+		return this.arr.reduce((prev, el) => el > min && el < max ? prev * el : prev, 1)
+	}
+}
+// Виклик функції першого об’єкта
+console.log(firstObj.getSum())
+console.log(firstObj.getSum.call(secondObj))
+console.log(firstObj.getSum.apply(secondObj))
+// Виклик функції другого об’єкта
+console.log(secondObj.getProd(0, 10))
+console.log(secondObj.getProd.call(firstObj, 0, 10))
+console.log(secondObj.getProd.apply(firstObj, [20, 60]))
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 4</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 4</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задача 4. Розробити клас Baner
+				<img src="./img/04.jpg" alt="">
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+					
+
+const linksArray = [
+   {
+      image : '<img src="./img/sbu.jpg" alt="">',
+      url : 'https://ssu.gov.ua/'
+   },
+   {
+      image : '<img src="./img/ngu.jpg" alt="">',
+      url : 'https://ngu.gov.ua/'
+   },
+   {
+      image : '<img src="./img/spec.jpg" alt="">',
+      url : 'https://www.mil.gov.ua/ministry/sklad-zbrojnix-sil-ukraini/sili-speczialnih-operaczij-zbrojnih-sil-ukraini/'
+   },
+   {
+      image : '<img src="./img/svu.jpg" alt="">',
+      url : 'https://www.mil.gov.ua/ministry/sklad-zbrojnix-sil-ukraini/suhoputni-vijska/'
+   },
+   {
+      image : '<img src="./img/vps.jpg" alt="">',
+      url : 'https://www.mil.gov.ua/ministry/sklad-zbrojnix-sil-ukraini/povitryani-sili/'
+   },
+	{
+      image : '<img src="./img/kraken.jpg" alt="">',
+      url : 'https://uk.wikipedia.org/wiki/Kraken_(%D1%81%D0%BF%D0%B5%D1%86%D0%BF%D1%96%D0%B4%D1%80%D0%BE%D0%B7%D0%B4%D1%96%D0%BB)'
+   },
+]
+
+
+class Banner {
+   constructor(linksArray){
+      this.linksArray = linksArray
+   }
+
+   getRandomNumber(minNumber, maxNumber) { 
+   	return minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1))
+   }
+
+   getRandomLink(){
+      let index = this.getRandomNumber(0, this.linksArray.length - 1)
+      return this.linksArray[index]
+   }
+
+   toString(){
+      const randObj = this.getRandomLink()
+
+      return `<a href="${randObj.url}" target="_blank">
+      ${randObj.image}
+      </a> `
+   }
+}
+
+      let randBanner = new Banner(linksArray)
+      document.write(randBanner)
+
+
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>
