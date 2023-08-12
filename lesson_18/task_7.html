@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 7</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 7</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задача 7. Подорож складається з 3 етапів. 
+				На кожному етапі користувач може вибрати один з видів транспорту 
+				(авто, автобус, літак - випадаючий список), харчування 
+				(сніданок, обід, вечеря – checkbоx) та одного з 3-х гідів
+				(використати  - radio buttons). Ціни визначте самі. 
+				Підрахувати загальну вартість.
+			</p>
+			<p class="exercise__result">
+				<div class="exercise__container"></div>
+				<div class="exercise__button"></div>
+				<script>
+					"use strict"
+
+// Вирішив заморочитись і попрацювати з конструктором і не робити розмітку в HTML
+
+class Vacation {
+	constructor(title, stage){
+		this.title = title
+		this.stage = stage
+	}
+	buildSelectionMenu(containerSelector) {
+		const cardContainer = document.createElement('div')
+		cardContainer.className = 'card-container'
+
+		const cardTitle = document.createElement('h2')
+      cardTitle.className = 'card-title'
+      cardTitle.innerText = `${this.title} ${this.stage}`
+		cardContainer.append(cardTitle)
+
+		const cardSelect = document.createElement('select')
+		cardSelect.className = 'card-select'
+		cardContainer.append(cardSelect)
+
+		const selectOption0 = document.createElement('option')
+		selectOption0.className = 'select-option'
+		selectOption0.setAttribute('value','0')
+		selectOption0.innerText = 'select transport'
+		cardSelect.append(selectOption0)
+
+		const selectOption1 = document.createElement('option')
+		selectOption1.className = 'select-option'
+		selectOption1.setAttribute('value', '700')
+		selectOption1.innerText = 'auto'
+		cardSelect.append(selectOption1)
+
+		const selectOption2 = document.createElement('option')
+		selectOption2.className = 'select-option'
+		selectOption2.setAttribute('value', '400')
+		selectOption2.innerText = 'bus'
+		cardSelect.append(selectOption2)
+
+		const selectOption3 = document.createElement('option')
+		selectOption3.className = 'select-option'
+		selectOption3.setAttribute('value', '1500')
+		selectOption3.innerText = 'plane'
+		cardSelect.append(selectOption3)
+
+		const cardCheckBox = document.createElement('div')
+		cardCheckBox.className = 'card-check-box'
+		cardContainer.append(cardCheckBox)
+
+		const labelCheckBox1 = document.createElement('label')
+		labelCheckBox1.innerText = 'breakfast'
+		labelCheckBox1.className = 'label-check-box'
+		cardCheckBox.append(labelCheckBox1)
+
+		const inputCheckBox1 = document.createElement('input')
+		inputCheckBox1.setAttribute('type', 'checkbox')
+		inputCheckBox1.setAttribute('value', '250')
+		labelCheckBox1.append(inputCheckBox1)
+
+		const labelCheckBox2 = document.createElement('label')
+		labelCheckBox2.innerText = 'lunch'
+		labelCheckBox2.className = 'label-check-box'
+		cardCheckBox.append(labelCheckBox2)
+
+		const inputCheckBox2 = document.createElement('input')
+		inputCheckBox2.setAttribute('type', 'checkbox')
+		inputCheckBox2.setAttribute('value', '300')
+		labelCheckBox2.append(inputCheckBox2)
+
+		const labelCheckBox3 = document.createElement('label')
+		labelCheckBox3.innerText = 'dinner'
+		labelCheckBox3.className = 'label-check-box'
+		cardCheckBox.append(labelCheckBox3)
+
+		const inputCheckBox3 = document.createElement('input')
+		inputCheckBox3.setAttribute('type', 'checkbox')
+		inputCheckBox3.setAttribute('value', '350')
+		labelCheckBox3.append(inputCheckBox3)
+
+		const cardRadioInputBox = document.createElement('div')
+		cardRadioInputBox.className = 'card-radio-input'
+		cardContainer.append(cardRadioInputBox)
+
+		const labelRadioInput1 = document.createElement('label')
+		labelRadioInput1.innerText = 'guide 1'
+		labelRadioInput1.className = 'label-radio-input'
+		cardRadioInputBox.append(labelRadioInput1)
+
+		const radioInput1 = document.createElement('input')
+		radioInput1.setAttribute('type', 'radio')
+		radioInput1.setAttribute('name', this.title + this.stage)
+		radioInput1.setAttribute('value', '200')
+		labelRadioInput1.append(radioInput1)
+
+		const labelRadioInput2 = document.createElement('label')
+		labelRadioInput2.innerText = 'guide 2'
+		labelRadioInput2.className = 'label-radio-input'
+		cardRadioInputBox.append(labelRadioInput2)
+
+		const radioInput2 = document.createElement('input')
+		radioInput2.setAttribute('type', 'radio')
+		radioInput2.setAttribute('name', this.title + this.stage)
+		radioInput2.setAttribute('value', '250')
+		labelRadioInput2.append(radioInput2)
+
+		const labelRadioInput3 = document.createElement('label')
+		labelRadioInput3.innerText = 'guide 3'
+		labelRadioInput3.className = 'label-radio-input'
+		cardRadioInputBox.append(labelRadioInput3)
+
+		const radioInput3 = document.createElement('input')
+		radioInput3.setAttribute('type', 'radio')
+		radioInput3.setAttribute('name', this.title + this.stage)
+		radioInput3.setAttribute('value', '300')
+		labelRadioInput3.append(radioInput3)
+
+		if (containerSelector)
+            document.querySelector(containerSelector).append(cardContainer)
+	}
+
+}
+
+
+	const btn = document.createElement('button')
+	btn.className = 'button'
+	document.querySelector('.exercise__button').append(btn)
+	btn.innerText = 'total cost'
+	const output = document.createElement('span')
+	output.className = 'output'
+	document.querySelector('.exercise__button').append(output)
+
+	function getTotalCostSelects() {
+		let sum = 0
+		let selects = document.querySelectorAll('select')
+		for (const sel of selects) {
+			sum += parseInt(sel.value)
+		}
+		return sum
+	}
+
+	function getTotalCostInputs(){
+		let sum = 0
+		let inputs = document.querySelectorAll('input')
+		for (const inp of inputs) {
+			if(inp.checked) sum += parseInt(inp.value)
+		}
+		return sum
+	}
+
+	function getTotalCost() {
+		let output = document.querySelector('.output')
+		let sumOfSelects = getTotalCostSelects()
+		let sumOfInputs = getTotalCostInputs()
+		let result = sumOfSelects + sumOfInputs
+		output.innerText = `Total = ${result}`
+	}
+
+window.onload = function(){
+	let vacationStage1 = new Vacation('Stage', 1)
+	vacationStage1.buildSelectionMenu('.exercise__container')
+
+	let vacationStage2 = new Vacation('Stage', 2)
+	vacationStage2.buildSelectionMenu('.exercise__container')
+
+	let vacationStage3 = new Vacation('Stage', 3)
+	vacationStage3.buildSelectionMenu('.exercise__container')
+
+	document.querySelector('.button').onclick = getTotalCost
+
+}
+
+
+
+
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 5</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 5</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задача 5. Користувач задає кількість рядків і стовпців. 
+				Відобразити таблицю, у клітинках якої знаходяться числа 1, 2, 3, …<br>
+				<img src="./img/05.jpg" alt="task5">
+			</p>
+			<p class="exercise__result">
+				<div class="exercise__table">
+
+				</div>
+				<script>
+					"use strict"
+
+let inpRow = document.createElement('input')
+inpRow.setAttribute('type', 'number')
+inpRow.setAttribute('placeholder', 'введіть кількість рядків')
+inpRow.classList.add('inputRow')
+document.querySelector('.exercise__table').append(inpRow)
+
+let inpColumn = document.createElement('input')
+inpColumn.setAttribute('type', 'number')
+inpColumn.setAttribute('placeholder', 'введіть кількість стовпців')
+inpColumn.classList.add('inputColumn')
+document.querySelector('.exercise__table').append(inpColumn)
+
+let btn = document.createElement('button')
+btn.classList.add('button')
+document.querySelector('.exercise__table').append(btn)
+btn.innerText = 'створити таблицю'
+
+function createTable (rowNum, colNum) {
+	let counter = 0
+	const table = document.createElement('table')
+	document.querySelector('.exercise__table').append(table)
+	for (let i = 0; i < rowNum; i++) {
+		const trElement = document.createElement('tr')
+		for (let j = 0; j < colNum; j++) {
+			counter ++
+			const tdElement = document.createElement('td')
+			tdElement.innerText = counter
+			trElement.append(tdElement)
+		}
+		table.append(trElement)
+	}
+}
+
+function getInputNumbers() {
+	let quantityRowNum = parseInt(document.querySelector('.inputRow').value)
+	let quantityColumnNum = parseInt(document.querySelector('.inputColumn').value)
+	createTable(quantityRowNum, quantityColumnNum)
+}
+
+window.onload = function(){
+	document.querySelector('.button').onclick = getInputNumbers
+}
+
+
+					
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

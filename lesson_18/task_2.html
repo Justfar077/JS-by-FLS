@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 2</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 2</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задача 2. Зробити конвертер валют (курси валют – константи у скрипті)
+				<img src="./img/02.jpg" alt="task2">
+			</p>
+			<p class="exercise__result">
+				<div class="exercise__converter">
+					<label for="sumUAH">
+						Сума в гривнях
+						<input id="sumUAH" type="number" placeholder="введіть сумму">
+					</label>
+					<br>
+					<button class="button converter__btn" id="convertBtn">Конвертувати</button>
+					<br>
+					<label for="sumEUR">
+						Сума в євро
+						<input id="sumEUR" type="number">
+					</label>
+					<br>
+					<label for="sumUSD">
+						Сумав доларах
+						<input id="sumUSD" type="number">
+					</label>
+				</div>
+
+				<script>
+					"use strict"
+
+const currentUSD = 37.5
+const currentEUR = 41.5
+
+function converter () {
+	const sumUAH = parseFloat(document.getElementById('sumUAH').value)
+	const exchangeUSD = sumUAH / currentUSD
+	const exchangeEUR = sumUAH / currentEUR
+	document.getElementById('sumEUR').value = exchangeEUR.toFixed(2)
+	document.getElementById('sumUSD').value = exchangeUSD.toFixed(2)
+}
+
+window.onload = function () {
+	document.getElementById('convertBtn').onclick = converter
+}
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

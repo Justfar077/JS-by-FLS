@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 1</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 1</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задача 1. Розробити калькулятор<br>
+				<img src="./img/01.jpg" alt="task1">
+			</p>
+			<p class="exercise__result">
+
+				<div class="exercise__calculator">
+					<label for="firstNumber">
+						First number
+						<input id="firstNumber" type="number" placeholder="Введіть цифру">
+					</label>
+					<label for="secondNumber">
+						Second number
+						<input id="secondNumber" type="number" placeholder="Введіть цифру">
+					</label>
+						<div class="buttons">
+							<button id="plusButton" class="button">Додати</button>
+							<button id="minusButton" class="button">Відняти</button>
+							<button id="multButton" class="button">Помножити</button>
+							<button id="divisButton" class="button">Поділити</button>
+						</div>
+						<label for="resultInput">
+							Результат
+							<input id="resultInput" type="number">
+						</label>
+				</div>
+
+				<script>
+					"use strict"
+
+
+function getPlus () {
+	let firstNum = parseFloat(document.getElementById('firstNumber').value)
+	let secondNum = parseFloat(document.getElementById('secondNumber').value)
+	let result = firstNum + secondNum
+	document.getElementById('resultInput').value = result
+}
+function getMinus () {
+	let firstNum = parseFloat(document.getElementById('firstNumber').value)
+	let secondNum = parseFloat(document.getElementById('secondNumber').value)
+	let result = firstNum - secondNum
+	document.getElementById('resultInput').value = result
+}
+function getMultiplication () {
+	let firstNum = parseFloat(document.getElementById('firstNumber').value)
+	let secondNum = parseFloat(document.getElementById('secondNumber').value)
+	let result = firstNum * secondNum
+	document.getElementById('resultInput').value = result
+}
+function getDivision () {
+	let firstNum = parseFloat(document.getElementById('firstNumber').value)
+	let secondNum = parseFloat(document.getElementById('secondNumber').value)
+	let result = firstNum / secondNum
+	document.getElementById('resultInput').value = result
+}
+window.onload = function(){
+	document.getElementById('plusButton').onclick = getPlus
+	document.getElementById('minusButton').onclick = getMinus
+	document.getElementById('multButton').onclick = getMultiplication
+	document.getElementById('divisButton').onclick = getDivision
+}
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>
