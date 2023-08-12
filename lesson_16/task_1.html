@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 1</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 1</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задача 1. Створити клас TDate для роботи із датами у форматі “день.місяць.рік”. 
+				Дата представляється структурою із трьома полями. 
+				Реалізувати методи збільшення/зменшення дати на певну кількість днів,
+				місяців чи років. Введення та виведення дати реалізувати за допомогою методу  toString.
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+
+class TDate {
+	#day
+	#month
+	#year
+
+	constructor (day, month, year){
+		this.day = day
+		this.month = month
+		this.year = year
+	}
+
+	get day() {
+		return this.#day
+	}
+
+	set day(newDay) {
+		if(newDay < 0) throw new Error ('Некоректний день місяця')
+		this.#day = newDay
+	}
+
+	addDay(days) {
+		if(days < 0) throw new Error ('Значення дня не може бути відємним')
+		this.day += days
+
+		while (this.day > this.daysInMonth(this.month, this.year)) {
+			this.day -= this.daysInMonth(this.month, this.year)
+			this.addMonth(1)
+		}
+	}
+
+	subtractDay(days) {
+      if (days < 0) throw new Error('Значення дня не може бути відємним');
+      this.Day -= days;
+
+      while (this.day <= 0) {
+         this.subtractMonth(1);
+         this.day += this.daysInMonth(this.month, this.year);
+      }
+   }
+
+
+	get month() {
+		return this.#month
+	}
+
+	set month(newMonth) {
+		if(newMonth < 0) throw new Error ('Некоректний місяць')
+		this.#month = newMonth
+	}
+
+	addMonth(month) {
+      if (month <= 0) throw new Error("Значення місяця не може бути відємним");
+      this.month += month;
+
+      while (this.month > 12) {
+         this.month -= 12;
+         this.addYear(1);
+      }
+   }
+
+   subtractMonth(months) {
+      if (months < 0) throw new Error("Значення місяця не може бути відємним");
+      this.month -= months;
+
+      while (this.month <= 0) {
+         this.subtractYear(1);
+         this.month += 12;
+      }
+   }
+
+
+	get year() {
+		return this.#year
+	}
+
+	set year(newYear) {
+		if(newYear < 0) throw new Error ('Некоректний рік')
+		this.#year = newYear
+	}
+
+	addYear(year) {
+      if (year < 0) throw new Error("Значення року не може бути відємним");
+      return (this.year += year);
+   }
+
+   subtractYear(years) {
+      if (years < 0) throw new Error("Значення року не може бути відємним");
+      this.year -= years;
+   }
+
+
+	daysInMonth(month, year) {
+      const daysInMonths = [
+			0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31,
+		];
+
+      if (month === 2 && this.isLeapYear(year)) {
+      return 29;
+      } else {
+         return daysInMonths[month];
+      }
+   }
+
+   isLeapYear(year) {
+      return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+   }
+
+
+	
+	toString(){
+		return `День ${this.day} місяць ${this.month} рік ${this.year}`;
+	}
+	
+}
+
+
+
+
+let date = new TDate(1, 11, 2010)
+document.write(`Початкова дата : ${date}<br>`)
+
+let massageForUser = confirm(`Початкова дата : ${date} Бажаєте змінити дату?`)
+
+if(massageForUser){
+	let changeDay = confirm(`Бажаєте змінити день?`)
+	if(changeDay){
+		date.addDay(parseInt(prompt('Введіть кількість днів яку треба додати')))
+	}
+	let changeMonth = confirm(`Бажаєте змінити міяць?`)
+	if(changeMonth){
+		date.addMonth(parseInt(prompt('Введіть кількість місяців яку треба додати')))
+	}
+	let changeYear = confirm(`Бажаєте змінити рік?`)
+	if(changeYear){
+		date.addYear(parseInt(prompt('Введіть кількість років яку треба додати')))
+	}
+}
+document.write(`Змінена дата : ${date}`)
+document.write(`<p style="font-size: 18px;text-align: center;">якщо треба внести зміні - оновіть сторінку</p>`)
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

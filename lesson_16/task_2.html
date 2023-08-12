@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 2</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 2</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задача 2. Створити клас TMoney для роботи з грошовими сумами. 
+				Сума повинна зберігатися у вигляді доларового еквіваленту. 
+				Реалізувати методи додавання/вилучення грошової маси, 
+				вказуючи необхідну суму у гривнях, та визначення курсу долара, 
+				при якому сума у гривнях збільшиться на 100. Курс долара зберігати в окремому полі. 
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+					
+
+class TMoney {
+   #dollarBalance;
+
+   constructor(balanceUAH, dollarRate) {
+		this.balanceUAH = balanceUAH;
+		this.#dollarBalance = balanceUAH / dollarRate;
+		this.dollarRate = dollarRate;
+   }
+
+   get balanceUAH() {
+		return this.#dollarBalance * this.dollarRate;
+   }
+
+   set balanceUAH(sumUAH) {
+      if (sumUAH < 0) throw new Error("Баланс повинен бути більшим за 0");
+         this.#dollarBalance = sumUAH / this.dollarRate;
+   }
+
+   refillAccount(sumUAH) {
+      if (sumUAH < 0) throw newError("Сумма поповнення повинна бути більше за 0");
+         this.balanceUAH += sumUAH;
+   }
+
+   withdrawalAmount(sumUAH) {
+      if (sumUAH < 0) throw new Error("Сумма віднімання повинна бути більше за 0");
+
+      if (sumUAH > this.balance)
+         throw new Error("Недостатньо коштів на рахунку");
+
+      this.balanceUAH -= sumUAH;
+   }
+
+   getTarget100Rate() {
+      return (this.balanceUAH + 100) / this.#dollarBalance;
+   }
+
+   toString() {
+      return `${this.#dollarBalance.toFixed(2)}$`;
+   }
+}
+
+const bankAccount = new TMoney(15500, 37.5);
+document.write(`Початковий баланс: ${bankAccount}<br>`)
+
+
+let massageForUser = confirm(`${bankAccount} Бажаєте змінити баланс?`)
+
+if(massageForUser){
+	let addMoney = confirm(`Бажаєте поповнити баланс?`)
+	if(addMoney){
+		bankAccount.refillAccount(parseInt(prompt('Введіть сумму поповнення у гривні')))
+	}
+	let withdrawMoney = confirm(`Бажаєте зняти кошти?`)
+	if(withdrawMoney){
+		bankAccount.withdrawalAmount(parseInt(prompt('Введіть сумму зняття коштів у гривні')))
+	}
+}
+document.write(`Кінцевий баланс: ${bankAccount}<br>`)
+document.write(`Курс долара: ${bankAccount.getTarget100Rate().toFixed(2)}`)
+document.write(`<p style="font-size: 18px;text-align: center;">якщо треба внести зміні - оновіть сторінку</p>`)
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

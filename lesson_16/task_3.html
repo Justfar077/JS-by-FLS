@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 3</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 3</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				<img src="./img/01.jpg" alt="task3">>
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+
+class CompanyCreationDate{
+   constructor(year,month){
+      this.year = year
+      this.month = month
+   }
+
+   toString() {
+      return `Рік - ${this.year} \ Місяць - ${this.month}`
+   }
+}
+
+class CompanyServices{
+   constructor(title,cost,term){
+   this.title = title
+   this.cost = cost
+   this.term = term
+   }
+
+   toString() {
+      return `Назва послуги - ${this.title}\ Вартість - ${this.cost} грн\ Термін виконання - ${this.term} годин`
+   }
+}
+
+class BranchesAddresses{
+   constructor(country,city,street,house){
+   this.country = country
+   this.city = city
+   this.street = street
+   this.house = house
+   }
+
+   toString() {
+      return `Країна - ${this.country}\ Місто - ${this.city}\ Вулиця - ${this.street}\ Номер будинку - ${this.house}`
+   }
+}
+
+class CompanyData{                
+   constructor(companyName){
+      this.companyName = companyName                                              
+      this.companyCreationDate = new CompanyCreationDate()
+      this.companyServices = [] 
+      this.branchesAddresses = []
+   }
+
+   addCompanyServices(serviceTitle1,serviceCost1,serviceTerm1){
+      let initService = new CompanyServices(serviceTitle1,serviceCost1,serviceTerm1)
+      this.companyServices.push(initService)
+   }
+
+   addBranchesAddresses(branchesCountry, branchesCity, branchesStreet, branchesHouse){
+      let initBranches = new BranchesAddresses(branchesCountry,branchesCity,branchesStreet,branchesHouse)
+      this.branchesAddresses.push(initBranches)
+   }
+
+   existencePeriod(currentYear){
+      return currentYear - this.companyCreationDate.year
+   }
+
+   printBranches(chooseCity){
+      return this.branchesAddresses.filter((el) => el.city === chooseCity)
+   }
+
+   printAvailableService(userAvailableSum, userAvailableTerm){
+      return this.companyServices.filter((el) => el.cost <= userAvailableSum && el.term <= userAvailableTerm)
+   }
+
+   run(){
+      let currentYear = 2023
+      document.write(`Компанія існує - ${this.existencePeriod(currentYear)} років`)
+
+      let chooseCity = prompt('Філіали компнії знаходяться в містах - Київ, Харків, Одеса, Дніпро, Донецьк, Луганськ, Запоріжжя. Введіть назву міста', 'Харків')
+      console.log(`${this.printBranches(chooseCity)}`)
+
+      let userAvailableSum = parseInt(prompt('Введіть максимальну суму, до 10000 грн', 4000))
+      let userAvailableTerm = parseInt(prompt('Введіть максимальний термін часу, максимум 80 годин', '35'))
+      console.log(`${this.printAvailableService(userAvailableSum, userAvailableTerm)}`)
+   }
+
+   toString() {
+      return `Назва компанії - ${this.companyName}<br> Дата заснування - ${this.companyCreationDate}<br>`
+   }
+}
+
+
+let statusStroy = new CompanyData('Статус сторой')
+
+
+statusStroy.companyCreationDate = new CompanyCreationDate(2002, 5)
+
+
+statusStroy.addCompanyServices('будівнитство лікарні',9000,80)
+statusStroy.addCompanyServices('перевезення стройматеріалів',2000,10)
+statusStroy.addCompanyServices('будівнитство школи',6500,70)
+statusStroy.addCompanyServices('ремонт будівлі',1200,7)
+statusStroy.addCompanyServices('підготовка під забудову',1800,10)
+statusStroy.addCompanyServices('будування паркану',2300,20)
+statusStroy.addCompanyServices('підготовка під забудову',2300,25)
+statusStroy.addCompanyServices('будівнитство дитячого садочка',8300,75)
+statusStroy.addCompanyServices('будівництво житлового дому',6250,60)
+
+
+statusStroy.addBranchesAddresses('Україна','Харків','Алечевських',25)
+statusStroy.addBranchesAddresses('Україна','Харків','пр-т С. Бандери',115)
+statusStroy.addBranchesAddresses('Україна','Одеса','Преображенська',112)
+statusStroy.addBranchesAddresses('Україна','Одеса','пр-т Шевченка',37/1)
+statusStroy.addBranchesAddresses('Україна','Киів','Б. Хмельницького',41)
+statusStroy.addBranchesAddresses('Україна','Киів','Перемоги',82)
+statusStroy.addBranchesAddresses('Україна','Дніпро','Мечнікова',39)
+statusStroy.addBranchesAddresses('Україна','Дніпро','пр-т Гагаріна',114)
+statusStroy.addBranchesAddresses('Україна','Донецьк','С. Бандери',14)
+statusStroy.addBranchesAddresses('Україна','Луганськ','пр-т Л. Українки',112)
+
+
+document.write(statusStroy) 
+statusStroy.run()         
+console.log(statusStroy)
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>
