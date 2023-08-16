@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 4</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 4</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Особиста бібліотека. Картотека домашньої бібліотеки: дані книги 
+				(автори (піб, рік народження, короткий опис), назва книги, жанр, 
+				видавництво (назва, реєстраційний номер, рік засування)). 
+				Реалізувати розділи бібліотеки організувати додавання/вилучення книг та  
+				вибір книг за назвою, за ПІБ автора, за видавництвом.
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+class Library{
+	constructor(title, initBookList){
+		this.title = title
+		this.bookList = initBookList
+	}
+	addBook(newBook){
+		this.bookList.push(newBook)
+	}
+	removeBook(name){
+		this.bookList = this.bookList.filter(book => book.bookName !== name)
+	}
+	choiceBookByName(name){
+		return this.bookList.filter(book => book.bookName === name)
+	}
+	choiceBookByAuthor(firstName, lastName){
+		return this.bookList.filter(book => 
+		book.author.authorFirstName === firstName && book.author.authorLastName === lastName)
+	}
+	choiceBookByPublishingHouse(namePublishHouse){
+		return this.bookList.filter(book => book.publisher.publishTitle === namePublishHouse)
+	}
+}
+
+class BookAuthor {
+	constructor({authorFirstName, authorLastName, yearOfFoundation, descriptionBook}){
+		this.authorFirstName = authorFirstName
+		this.authorLastName = authorLastName
+		this.yearOfFoundation = yearOfFoundation
+		this.descriptionBook = descriptionBook
+	}
+}
+
+class PublishHouse {
+	constructor({publishTitle, registrationNumber, foundingYear}){
+		this.publishTitle = publishTitle
+		this.registrationNumber = registrationNumber
+		this.foundingYear = foundingYear
+	}
+}
+
+class Book {
+	constructor(initData){
+		this.author = new BookAuthor(initData)
+		this.publisher = new PublishHouse(initData)
+		this.bookName = initData.bookName
+		this.bookGenre = initData.bookGenre
+	}
+}
+
+let bookList = [
+	new Book({
+		authorFirstName: 'Стівен',
+		authorLastName: 'Кінг',
+		yearOfFoundation: 2023,
+		descriptionBook: 'Хітовий апокаліптичний телесеріал',
+		bookName: 'Під куполом',
+		bookGenre: 'Фэнтезі',
+		publishTitle: 'КСД',
+		registrationNumber: '123123',
+		foundingYear: 2001,
+	}),
+	new Book({
+		authorFirstName: 'Стівен',
+		authorLastName: 'Кінг',
+		yearOfFoundation: 2023,
+		descriptionBook: 'Історія, що покликана розрадити в темні часи',
+		bookName: 'Казка',
+		bookGenre: 'Фэнтезі',
+		publishTitle: 'КСД',
+		registrationNumber: '123123',
+		foundingYear: 2001,
+	}),
+	new Book({
+		authorFirstName: 'Сунь',
+		authorLastName: 'Цзи',
+		yearOfFoundation: 2015,
+		descriptionBook: 'Історія Військової Справи',
+		bookName: 'Мистецтво війни',
+		bookGenre: 'Військова наука',
+		publishTitle: 'Видавництво Старого Лева',
+		registrationNumber: '3562553',
+		foundingYear: 2001,
+	}),
+	new Book({
+		authorFirstName: 'Леся',
+		authorLastName: 'Українка',
+		yearOfFoundation: 2015,
+		descriptionBook: 'Українська література',
+		bookName: 'Мавка',
+		bookGenre: 'Лісова пісня',
+		publishTitle: 'Ранок',
+		registrationNumber: '5426521',
+		foundingYear: 1997,
+	}),
+	new Book({
+		authorFirstName: 'Іван',
+		authorLastName: 'Франко',
+		yearOfFoundation: 2019,
+		descriptionBook: 'Українська література',
+		bookName: 'Захар Беркут',
+		bookGenre: 'Фікшн',
+		publishTitle: 'КСД',
+		registrationNumber: '123123',
+		foundingYear: 2001,
+	}),
+	new Book({
+		authorFirstName: 'Тарас',
+		authorLastName: 'Шевченко',
+		yearOfFoundation: 2020,
+		descriptionBook: 'Українська література',
+		bookName: 'Кобзар',
+		bookGenre: 'Поезія',
+		publishTitle: 'Глорія',
+		registrationNumber: '1254658',
+		foundingYear: 2001,
+	}),
+	new Book({
+		authorFirstName: 'Іван',
+		authorLastName: 'Франко',
+		yearOfFoundation: 2017,
+		descriptionBook: 'Українська література',
+		bookName: 'Грицева шкільна наука',
+		bookGenre: 'Оповідання',
+		publishTitle: 'Глорія',
+		registrationNumber: '1254658',
+		foundingYear: 2001,
+	}),
+	new Book({
+		authorFirstName: 'Іван',
+		authorLastName: 'Франко',
+		yearOfFoundation: 2021,
+		descriptionBook: 'Збірники есе',
+		bookName: 'Україна самостійна',
+		bookGenre: 'Оповідання',
+		publishTitle: 'Фоліо',
+		registrationNumber: '5642199',
+		foundingYear: 2016,
+	}),
+	new Book({
+		authorFirstName: 'Іван',
+		authorLastName: 'Франко',
+		yearOfFoundation: 2022,
+		descriptionBook: 'Шкільна бібліотека української та світової літератури (міні)',
+		bookName: 'Украдене щастя',
+		bookGenre: 'Класична і сучасна проза та поезія',
+		publishTitle: 'Фоліо',
+		registrationNumber: '5642199',
+		foundingYear: 2016,
+	}),
+	new Book({
+		authorFirstName: 'Григорій',
+		authorLastName: 'Сковорода',
+		yearOfFoundation: 2022,
+		descriptionBook: 'Присвячено 300-й річниці від дня народження Григорія Савича Сковороди',
+		bookName: 'Світ ловив мене…',
+		bookGenre: 'Класична і сучасна проза та поезія',
+		publishTitle: 'Фоліо',
+		registrationNumber: '5642199',
+		foundingYear: 2016,
+	}),
+]
+
+
+let myLibrary = new Library('My home library', bookList)
+console.log(myLibrary)
+myLibrary.addBook(
+	new Book({
+		authorFirstName: 'Томас',
+		authorLastName: 'Гарріс',
+		yearOfFoundation: '2023',
+		descriptionBook: 'Серія художньої літератури «КУЛЬТREAD»',
+		bookName: 'Червоний дракон',
+		bookGenre: 'Трилер',
+		publishTitle: 'КСД',
+		registrationNumber: '123123',
+		foundingYear: '2001',
+	}),
+)
+console.log(myLibrary)
+myLibrary.removeBook('Під куполом')
+console.log(myLibrary)
+console.log(myLibrary.choiceBookByName('Захар Беркут'))
+console.log(myLibrary.choiceBookByAuthor("Іван", "Франко"))
+console.log(myLibrary.choiceBookByPublishingHouse("Фоліо"))
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

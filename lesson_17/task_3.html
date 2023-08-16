@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 3</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 3</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Створити клас Нагадувач. Кожні вказані кількості секунд (використати setInterval) 
+				програма нагадує про якусь подію (це просто текст) і також виводиться порядковий 
+				номер скільки раз вже нагадування було. Зробити так, щоб неможна було зробити 
+				одночасно декілька об’єктів-нагадувачів. Методи зупинки таймера, 
+				метод зміни повідомлення без зупинки таймера.
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+
+class Remainder {
+   static #isCreated
+
+   constructor(interval, message) {
+      if (Remainder.#isCreated) return Remainder.#isCreated
+      this.interval = interval * 1000
+      this.message = message
+      this.counter = 0
+      this.toggleInterval = null
+      Remainder.#isCreated = this
+   }
+
+   runRemainder() {
+      if (this.interval > 0) {
+			this.toggleInterval = setInterval(() => {
+				this.counter++
+				alert(`${this.counter}-${this.message}`)
+			}, this.interval)
+      } else {
+         throw new Error('Інтервал повинен бути більше за нуль')
+      }
+   }
+
+   stopRemainder() {
+      clearInterval(this.toggleInterval)
+   }
+
+   changeMessage(message) {
+      this.message = message
+   }
+}
+
+
+let UserRemainder = new Remainder(2, 'російський воєнний корабель іди на х*й')
+UserRemainder.runRemainder()
+
+setTimeout(() => {UserRemainder.changeMessage('Слава Укрїні')}, 10000)
+
+setTimeout(() => {UserRemainder.stopRemainder()}, 20000)
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

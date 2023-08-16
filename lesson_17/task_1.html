@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 1</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 1</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Створити клас, що дозволяє виконувати такі операції над масивами: 
+				знаходження кількості додатних, кількості від’ємних, 
+				кількість входжень деякого числа (статичні методи)
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+class ChangeArray {
+	static numOfPositiveDigits(array){
+		return array.reduce((prevSum, el) => el > 0 ? prevSum + 1 : prevSum, 0)
+	}
+	static numOfNegativeDigits(array){
+		return array.reduce((prevSum, el) => el < 0 ? prevSum + 1 : prevSum, 0)
+	}
+	static targetUserNumber(array, userName){
+		return array.reduce((prevSum, el) => el === userName ? prevSum + 1 : prevSum, 0)
+	}
+}
+
+let newArray = [22, 13, -12, 3, 35, 14, -14, 77, 14, -7, 71, 12, 34, -11, 19, 37, -5, -71,]
+let userName = parseInt(prompt('Введіть число'))
+document.write(`Додатних чисел: ${ChangeArray.numOfPositiveDigits(newArray)}<br>`)
+document.write(`Bід’ємних чисел: ${ChangeArray.numOfNegativeDigits(newArray)}<br>`)
+document.write(`Чисел що шукав користувач: ${ChangeArray.targetUserNumber(newArray, userName)}<br>`)
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

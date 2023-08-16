@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 2</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 2</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Створити службове авто (водій, марка, номер). Створити клас таким чином, 
+				щоб можна було створити тільки один екземпляр цього класу.
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+
+class WorkCar {
+	static #carOfWork
+	constructor(driverName, carModel, carRegisterNumber){
+		if(WorkCar.#carOfWork)
+		return WorkCar.#carOfWork
+		
+		this.driverName = driverName
+		this.carModel = carModel
+		this.carRegisterNumber = carRegisterNumber
+
+		WorkCar.#carOfWork = this
+	}
+	toString(){
+		return `Водій: ${this.driverName}<br>Марка автомобіля: ${this.carModel}<br>Реєстраційний номер: ${this.carRegisterNumber}`
+	}
+}
+
+
+let car = new WorkCar('Ruslan', 'Suzuki', '4856MGR')
+document.write(car)
+document.write('<br>')
+let car1 = new WorkCar('Petro', 'Seat', '6597MRS')
+document.write(car1)
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>
