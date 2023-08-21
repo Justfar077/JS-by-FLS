@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 1</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 1</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Дано 10 рядків тексту «Hello!» у окремих div. 
+				При кліку на якийсь із них усі наступні повинні бути зафарбовані у червоний колір.
+				<br>
+				<img src="./img/01.jpg" alt="task1">
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+											// перший варіант
+// function createElementDiv(text, quantityElem) {
+// 	for (let i = 0; i < quantityElem; i++) {
+// 		let div = document.createElement('div')
+// 		div.className = 'exercise__element-div'
+// 		div.innerText = text
+// 		document.querySelector('.exercise__result').append(div)
+// 		div.onclick = () => markNextElement(i)
+// 	}
+// }  
+
+// function markNextElement(index) {
+// 	let nextDiv = document.querySelectorAll('.exercise__element-div')
+// 	for (let i = index + 1; i < nextDiv.length; i++) {
+// 		nextDiv[i].style.color = 'red'
+		
+// 	}
+// }
+// let elem = createElementDiv('Hello!', 10)
+
+// ===================================================================================
+											// другий варіант
+
+
+function createElementDiv(text, quantityElem) {
+	for (let i = 0; i < quantityElem; i++) {
+		let div = document.createElement('div')
+		div.className = 'exercise__element-div'
+		div.innerText = text
+		document.querySelector('.exercise__result').append(div)
+	}
+} 
+function getBackground() {
+   let div = this
+	while (div.nextElementSibling) {
+      div = div.nextElementSibling
+      div.style.color = 'red'
+   }
+}
+window.onload = function () {
+   const divList = document.querySelectorAll('.exercise__element-div')
+   for (const div of divList) {
+      div.onclick = getBackground
+   }
+}
+let newElement = createElementDiv('Hello!', 10)
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>
