@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 2</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 2</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Дано 5 елементів input. 
+				При введенні значення у якийсь із них необхідно автоматично заповнювати інші 
+				(усі попередні у спадному порядку(кожен попередній має значення на 1 менше за 
+				наступний), усі наступні на 1 більше (кожен наступне на 1 більше за попереднього)
+				<br>
+				<img src="./img/02.jpg" alt="task2">
+			</p>
+			<p class="exercise__result">
+				<div class="exercise__inputs"></div>
+				<script>
+					"use strict"
+
+class InputsMaker {
+   constructor(quantityInputs, containerSelector) {
+      this.quantityInputs = quantityInputs
+      this.containerSelector = containerSelector
+      this.render()      
+   }
+
+	changeValue(element) {
+      let input = element.target
+      let inputValue = parseInt(input.value)
+      while (input.nextElementSibling) {
+         input.nextElementSibling.value = inputValue += 1;
+         input = input.nextElementSibling;
+      }
+      while (input.previousElementSibling) {
+         input.previousElementSibling.value = inputValue -= 1;
+         input = input.previousElementSibling
+      }
+   }
+
+   render() {
+      for (let i = 1; i <= this.quantityInputs; i++) {
+		this.input = document.createElement('input')
+		this.input.setAttribute('type', 'number')
+		this.input.setAttribute('placeholder', `Value ${i}`)
+		this.input.className = 'exercise__input'
+		this.input.oninput = this.changeValue.bind(this)
+		if (this.containerSelector)     
+			document.querySelector(this.containerSelector).append(this.input)
+      }
+   }
+}
+
+window.onload = function () {
+   let myInputs = new InputsMaker(5, '.exercise__inputs')
+}
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 3</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 3</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Дано 5 випадковим чином згенерованих нумерованих списків з 
+				рандомними числами (кількість елементів у списку випадкова від 1 до 10, 
+				елементи випадкові – від 1 до 100). 
+				При натисненні на кнопку нумеровані списки з парною кількістю елементів 
+				зафарбувати у зелений колір, інші у червоний.
+			</p>
+			<p class="exercise__result">
+				<div class="exercise__container"></div>
+				<script>
+					"use strict"
+
+
+class MakeListNumbers{
+	constructor(quantityLists, containerSelector){
+		this.quantityLists = quantityLists
+		this.containerSelector = containerSelector;
+		this.render()
+	}
+
+	getRandomNumber(minNum, maxNum){
+		return minNum + Math.floor(Math.random() * (maxNum - minNum +1))
+	}
+
+   render() {
+      for (let i = 1; i <= this.quantityLists; i++) {
+			this.numList = document.createElement('ol')
+			this.numList.className = 'exercise__number-list'
+			for (let index = 0; index < this.getRandomNumber(1, 10); index++) {
+				this.itemList = document.createElement('li')
+				this.itemList.className = 'exercise__number-item'
+				this.itemList.innerText = this.getRandomNumber(1, 100)
+				this.numList.append(this.itemList)
+			}
+
+		if (this.containerSelector)     
+			document.querySelector(this.containerSelector).append(this.numList)
+      }
+
+		this.button = document.createElement('button')
+		this.button.className = 'exercise__button'
+		this.button.innerText = 'color lists'
+		document.querySelector('.exercise__result').append(this.button)
+		this.button.onclick = this.colorListItem.bind(this)
+   }
+	colorListItem(){
+		let list = document.querySelectorAll('.exercise__number-list')
+		for (const element of list) {
+			if(element.children.length % 2 === 0) 
+			element.style.color = 'green'
+			else
+			element.style.color = 'red'
+		}
+	}
+
+}
+
+window.onload = function () {
+   let myLists = new MakeListNumbers(5, '.exercise__container')
+}
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>
