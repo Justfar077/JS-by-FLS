@@ -46,36 +46,61 @@
 					"use strict"
 
 
-function getPlus () {
-	let firstNum = parseFloat(document.getElementById('firstNumber').value)
-	let secondNum = parseFloat(document.getElementById('secondNumber').value)
-	let result = firstNum + secondNum
-	document.getElementById('resultInput').value = result
-}
-function getMinus () {
-	let firstNum = parseFloat(document.getElementById('firstNumber').value)
-	let secondNum = parseFloat(document.getElementById('secondNumber').value)
-	let result = firstNum - secondNum
-	document.getElementById('resultInput').value = result
-}
-function getMultiplication () {
-	let firstNum = parseFloat(document.getElementById('firstNumber').value)
-	let secondNum = parseFloat(document.getElementById('secondNumber').value)
-	let result = firstNum * secondNum
-	document.getElementById('resultInput').value = result
-}
-function getDivision () {
-	let firstNum = parseFloat(document.getElementById('firstNumber').value)
-	let secondNum = parseFloat(document.getElementById('secondNumber').value)
-	let result = firstNum / secondNum
-	document.getElementById('resultInput').value = result
-}
 window.onload = function(){
-	document.getElementById('plusButton').onclick = getPlus
-	document.getElementById('minusButton').onclick = getMinus
-	document.getElementById('multButton').onclick = getMultiplication
-	document.getElementById('divisButton').onclick = getDivision
+	document.getElementById('plusButton').onclick = calc
+	document.getElementById('minusButton').onclick = calc
+	document.getElementById('multButton').onclick = calc
+	document.getElementById('divisButton').onclick = calc
 }
+
+function calc (event) {
+	let btn = event.target
+	let firstNum = parseFloat(document.getElementById('firstNumber').value)
+	let secondNum = parseFloat(document.getElementById('secondNumber').value)
+	let plus = document.getElementById('plusButton')
+	let minus = document.getElementById('minusButton')
+	let multiplication = document.getElementById('multButton')
+	let division = document.getElementById('divisButton')
+	if(plus === btn) document.getElementById('resultInput').value = firstNum + secondNum
+	if(minus === btn) document.getElementById('resultInput').value = firstNum - secondNum
+	if(multiplication === btn) document.getElementById('resultInput').value = firstNum * secondNum
+	if(division === btn) document.getElementById('resultInput').value = firstNum / secondNum
+}
+
+// ======================================================================================
+					
+// function getPlus () {
+// 	let firstNum = parseFloat(document.getElementById('firstNumber').value)
+// 	let secondNum = parseFloat(document.getElementById('secondNumber').value)
+// 	let result = firstNum + secondNum
+// 	document.getElementById('resultInput').value = result
+// }
+// function getMinus () {
+// 	let firstNum = parseFloat(document.getElementById('firstNumber').value)
+// 	let secondNum = parseFloat(document.getElementById('secondNumber').value)
+// 	let result = firstNum - secondNum
+// 	document.getElementById('resultInput').value = result
+// }
+// function getMultiplication () {
+// 	let firstNum = parseFloat(document.getElementById('firstNumber').value)
+// 	let secondNum = parseFloat(document.getElementById('secondNumber').value)
+// 	let result = firstNum * secondNum
+// 	document.getElementById('resultInput').value = result
+// }
+// function getDivision () {
+// 	let firstNum = parseFloat(document.getElementById('firstNumber').value)
+// 	let secondNum = parseFloat(document.getElementById('secondNumber').value)
+// 	let result = firstNum / secondNum
+// 	document.getElementById('resultInput').value = result
+// }
+// window.onload = function(){
+// 	document.getElementById('plusButton').onclick = getPlus
+// 	document.getElementById('minusButton').onclick = getMinus
+// 	document.getElementById('multButton').onclick = getMultiplication
+// 	document.getElementById('divisButton').onclick = getDivision
+// }
+
+
 
 				</script>
 			</p>
