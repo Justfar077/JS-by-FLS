@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 5</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 5</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Відображаємо картки товарів, які користувач може вибирати. 
+				Вибраний товар має зелену рамку 
+				(при кліку робити toogle з класом вибраного елемента)
+				<img src="./img/05.jpg" alt="task5">
+			</p>
+			<p class="exercise__result">
+				<div class="exercise__container-store"></div>
+				<script>
+					"use strict"
+
+
+class StoreCards {
+	constructor({linkCard, imgSrc, priceCard, titleCard}){
+		this.linkCard = linkCard
+		this.imgSrc = imgSrc
+		this.priceCard = priceCard
+		this.titleCard = titleCard
+	}
+	render(containerSelector){
+		this.container = document.createElement('div')
+		this.container.className = 'exercise__card'
+
+		this.container.onclick = this.makeBorder.bind(this.container)
+
+		this.cardLink = document.createElement('a')
+		this.cardLink.className = 'exercise__link'
+		this.cardLink.setAttribute('href', this.linkCard)
+		this.container.append(this.cardLink)
+
+		this.containerImg = document.createElement('div')
+		this.containerImg.className = 'exercise__img'
+		this.cardLink.append(this.containerImg)
+
+		this.imgCard = document.createElement('img')
+		this.imgCard.setAttribute('src', this.imgSrc)
+		this.containerImg.append(this.imgCard)
+
+		this.textContainer = document.createElement('div')
+		this.textContainer.className = 'exercise__text'
+		this.cardLink.append(this.textContainer)
+
+		this.cardPrice = document.createElement('div')
+		this.cardPrice.className = 'exercise__price'
+		this.cardPrice.innerText = this.priceCard
+		this.textContainer.append(this.cardPrice)
+
+		this.cardTitle = document.createElement('h4')
+		this.cardTitle.className = 'exercise__title'
+		this.cardTitle.innerText = this.titleCard
+		this.textContainer.append(this.cardTitle)
+
+		this.containerBtn = document.createElement('div')
+		this.containerBtn.className = 'exercise__btn-container'
+		this.textContainer.append(this.containerBtn)
+
+		this.cardBtn = document.createElement('button')
+		this.cardBtn.className = 'exercise__store-button'
+		this.cardBtn.innerText = 'Придбати'
+		this.containerBtn.append(this.cardBtn)
+
+		if (containerSelector)
+         document.querySelector(containerSelector).append(this.container)
+	}
+	makeBorder(){
+		this.addClass = this
+		this.addClass.classList.toggle('border-green')
+	}
+}
+
+let linksSet = [
+	{
+		linkCard: '#',
+      imgSrc: './img/task5-01.jpg',
+      priceCard: '1600 грн',
+		titleCard:	'Маскувальний костюм Кікімора',
+	},
+	{
+		linkCard: '#',
+      imgSrc: './img/task5-02.jpg',
+      priceCard: '5500 грн',
+		titleCard:	'Маскувальний костюм снайпера',
+	},
+	{
+		linkCard: '#',
+      imgSrc: './img/task5-03.jpg',
+      priceCard: '4599 грн',
+		titleCard:	'Тактичний костюм снайпера',
+	},
+	{
+		linkCard: '#',
+      imgSrc: './img/task5-04.jpg',
+      priceCard: '800 грн',
+		titleCard:	'маскувальний дощовик - пончо',
+	},
+]
+
+window.onload = function(){
+	for (const card of linksSet) {
+		new StoreCards(card).render('.exercise__container-store')
+	}
+}
+
+
+
+					
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>
