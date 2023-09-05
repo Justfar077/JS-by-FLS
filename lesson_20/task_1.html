@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 1</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 1</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Сяючі зорі. Вказана кількість зірочок повинна з’являтися у випадковій частині 
+				екрану. Кожна зірка (це екземпляр класу Star) з певним кроком і інтервалом 
+				збільшується від мінімального до максимального розміру. 
+				Як тільки досягнути максимального розміру зірочка повинна з’являтися у 
+				іншій випадковій позиції.
+			</p>
+			<p class="exercise__result">
+				<div class="exercise__task1"></div>
+				<script>
+					"use strict"
+
+
+class Star{
+	constructor(interval, imgSrc){
+		this.interval = interval
+		this.imgSrc = imgSrc
+      this.minSize = 0
+		this.maxSize = this.getRandomNum(1, 70)
+	}
+	getRandomNum(minNum, maxNum){
+		return minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+	}
+	render(containerSelector){
+		this.container = document.createElement('div')
+		this.container.className = 'exercise__container'
+
+		this.imgStar = document.createElement('img')
+		this.imgStar.className = 'exercise__img'
+		this.imgStar.setAttribute('src', this.imgSrc)
+		this.imgStar.style.width = this.minSize + 'px'
+		this.imgStar.style.position = 'absolute'
+		this.imgStar.style.top = this.getRandomNum(0, 90) + '%' // this.getRandomNum(0, window.innerHeight - 10) + "px"
+		this.imgStar.style.left = this.getRandomNum(0, 90) + '%'// this.getRandomNum(0, window.innerWidth - 10) + "px"
+		
+		this.resizeStar(this.minSize, this.maxSize)
+		this.container.append(this.imgStar)
+		if(containerSelector)document.querySelector('.exercise__task1').append(this.container)
+	}
+
+		resizeStar(minSize, maxSize) {
+      this.intervalId = setInterval(() => {
+         this.imgStar.style.width = parseFloat(this.imgStar.style.width) + 3 + "px"
+			this.imgStar.style.height = this.imgStar.style.width
+         if (parseFloat(this.imgStar.style.width) >= this.maxSize) {
+				this.imgStar.style.top = this.getRandomNum(5, 90) + "%" // this.getRandomNum(0, window.innerHeight - 10) + "px"
+				this.imgStar.style.left = this.getRandomNum(5, 95) + "%" // this.getRandomNum(0, window.innerWidth - 10) + "px"
+				this.imgStar.style.width = this.minSize + "px"
+				this.imgStar.style.height = this.minSize + "px"
+            clearInterval(this.intervalId)
+            this.resizeStar(this.minSize, this.maxSize)
+            }
+         }, this.interval)
+      }
+}
+
+for (let i = 0; i < 70; i++) {
+	let myStars = new Star(90, '../img/star.svg', 1)
+	myStars.render('.exercise__task1')
+}
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

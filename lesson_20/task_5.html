@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 5</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 5</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задача. Динамічний пошук. Є список працівників і поле пошуку. 
+				При введенні відображаються усі, які містять вказаний фрагмент
+			</p>
+			<p class="exercise__result">
+				<div class="exercise__result-container"></div>
+				<script>
+					"use strict"
+
+
+class Input {
+	constructor(label) {
+		this.label = label;
+	}
+	render(container) {
+		const label = document.createElement("label");
+		label.className = 'exercise__label'
+		label.innerText = this.label;
+		const input = document.createElement("input");
+		input.className = 'exercise__input'
+		input.addEventListener("input", this.findText.bind(this));
+		label.append(input);
+		if (container) {
+			document.querySelector(container).append(label);
+		}
+		this.input = input;
+		this.el = label;
+	}
+	findText() {
+		const filter = new CustomEvent("filterText", {
+			detail: { value: this.input.value },
+		});
+		this.el.dispatchEvent(filter);
+	}
+}
+
+class SearchList {
+	constructor(array) {
+		this.array = array;
+	}
+	render(container) {
+		const list = document.createElement("ul");
+		list.className = 'exercise__list'
+		this.renderList(this.array, list);
+		this.list = list;
+		if (container) {
+			document.querySelector(container).append(list);
+		}
+	}
+	renderList(array, parentElement) {
+		for (let item = 0; item < array.length; item++) {
+			const li = document.createElement("li");
+			li.className = 'exercise__item'
+			li.innerText = array[item];
+			parentElement.append(li);
+		}
+	}
+	showResults(event) {
+		const inputValue = event.detail.value;
+		let newList = this.array.filter((item) => item.toLowerCase().includes(inputValue.toLowerCase()));
+		this.list.innerHTML = "";
+		this.renderList(newList, this.list);
+	}
+}
+
+
+window.onload = () => {
+	let names = [
+		"John",
+		"Richard",
+		"Alex",
+		"Bruno",
+		"Michael", 
+		"David", 
+		"William", 
+		"James", 
+		"Robert", 
+		"Joseph",
+		"Charles",
+		"Thomas",
+		"Daniel",
+		"Richard",
+		"Steven", 
+		"Matthew", 
+		"Andrew", 
+		"Brian", 
+		"Kevin", 
+		"Mark",
+		"Christopher", 
+		"Anthony", 
+		"Benjamin", 
+		"Petr", 
+		"Anatoliy",
+	];
+	const input = new Input("Enter name");
+	input.render(".exercise__result-container");
+	const list = new SearchList(names);
+	list.render(".exercise__result-container");
+	input.el.addEventListener("filterText", list.showResults.bind(list));
+};
+
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

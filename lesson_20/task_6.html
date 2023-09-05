@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 6</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 6</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Перекладач. Користувачу виводять змішані картки з словами на англійській 
+				і українській мові. Користувач поступово клікає на картки (виділяємо синьою рамкою). 
+				Якщо знайдено правильні пари карток, що відповідають одному слову, 
+				то видаляємо ці картки. Інакше - виділяємо червоною рамкою і через секунду 
+				забираємо рамку.
+			</p>
+			<p class="exercise__result">
+				<div class="exercise__translator"></div>
+				<script>
+					"use strict"
+
+class Translator {
+   constructor(wordsList) {
+      this.wordsList = wordsList
+      this.selectedWords = {}
+      this.correctAnswers = 0
+      this.wrongAnswers = 0
+   }
+   getRandomNumber(min, max) {
+      return min + Math.floor(Math.random() * (max - min + 1))
+   }
+   createWordsSectionDiv(lang) {
+      const container = document.createElement('div')
+      container.setAttribute('lang', lang)
+
+      const wordsObjectList = [...this.wordsList]
+      while (wordsObjectList.length > 0) {
+      const randomWordIndex = this.getRandomNumber(0,wordsObjectList.length - 1)
+      const selectedWord = wordsObjectList[randomWordIndex]
+      const wordDiv = document.createElement('div')
+      wordDiv.setAttribute('word-id', selectedWord.id)
+      wordDiv.className = 'item'
+      wordDiv.innerText = selectedWord[lang]
+      wordsObjectList.splice(randomWordIndex, 1)
+
+      container.append(wordDiv)
+      }
+
+      return container
+   }
+   checkSelectedWords() {
+      if ('en' in this.selectedWords && 'ua' in this.selectedWords) {
+			this.selectedWords['en'].targetDiv.classList.toggle('selected')
+			this.selectedWords['ua'].targetDiv.classList.toggle('selected')
+
+      if (this.selectedWords['en'].wordId === this.selectedWords['ua'].wordId) {
+			
+				this.selectedWords['en'].targetDiv.classList.toggle('right')
+				this.selectedWords['ua'].targetDiv.classList.toggle('right')
+				setTimeout(()=>{
+					this.selectedWords['en'].targetDiv.remove()
+					this.selectedWords['ua'].targetDiv.remove()
+					this.selectedWords = {}
+					}, 200)
+					this.correctAnswers++
+      } else {
+         this.selectedWords['en'].targetDiv.classList.toggle('wrong')
+         this.selectedWords['ua'].targetDiv.classList.toggle('wrong')
+         this.wrongAnswers++
+         setTimeout(() => {
+            this.selectedWords['en'].targetDiv.classList.toggle('wrong')
+            this.selectedWords['ua'].targetDiv.classList.toggle('wrong')
+            this.selectedWords = {}
+         }, 500)
+      }
+		if (this.correctAnswers === this.wordsList.length) {
+         const completeEvent = new CustomEvent('testComplete', {
+            detail: {
+            wrongAnswers: this.wrongAnswers,
+            },
+         })
+			this.container.dispatchEvent(completeEvent)
+			}
+		}
+   }
+   onWordListClick(lang, event) {
+      const targetDiv = event.target
+      const wordId = targetDiv.getAttribute('word-id')
+      if (wordId) {
+      if (this.selectedWords[lang])
+         this.selectedWords[lang].targetDiv.classList.toggle('selected')
+         this.selectedWords[lang] = {
+				wordId,
+				targetDiv,}
+         this.selectedWords[lang].targetDiv.classList.toggle('selected')
+         this.checkSelectedWords()
+      }
+   }
+   render(targetContainerSelector) {
+      const container = document.createElement('div')
+      container.className = 'translator'
+
+      const enList = this.createWordsSectionDiv('en')
+      enList.className = 'words-list'
+      enList.onclick = (event) => this.onWordListClick('en', event)
+      container.append(enList)
+
+      const uaList = this.createWordsSectionDiv('ua')
+      uaList.className = 'words-list'
+      uaList.onclick = (event) => this.onWordListClick('ua', event)
+      container.append(uaList)
+
+      if (targetContainerSelector)
+			document.querySelector(targetContainerSelector)?.append(container)
+      this.container = container
+      return container
+   }
+}
+
+const words = [
+   { id: 0, en: 'Apple', ua: 'Яблуко' },
+   { id: 1, en: 'Dog', ua: 'Собака' },
+   { id: 2, en: 'Cat', ua: 'Кішка' },
+   { id: 3, en: 'Book', ua: 'Книга' },
+   { id: 4, en: 'Sun', ua: 'Сонце' },
+	{ id: 5, en: 'Moon', ua: 'Луна' },
+   { id: 6, en: 'Water', ua: 'Вода' },
+   { id: 7, en: 'Tree', ua: 'Дерево' },
+   { id: 8, en: 'House', ua: 'Дім' },
+   { id: 9, en: 'Car', ua: 'Машина' },
+	{ id: 10, en: 'Flower', ua: 'Квітка' },
+   { id: 11, en: 'Friend', ua: 'Друг' },
+   { id: 12, en: 'Family', ua: 'Родина' },
+   { id: 13, en: 'Love', ua: 'Любов' },
+   { id: 14, en: 'Time', ua: 'Час' },
+	{ id: 15, en: 'Plane', ua: 'Літак' },
+]
+
+function onComplete(e) {
+   document.querySelector('.exercise__translator').remove()
+	let result = document.querySelector('.exercise__result')
+	result.innerText = `Кількість помилок - ${e.detail.wrongAnswers}`
+}
+window.onload = function () {
+   const myTranslator = new Translator(words)
+   myTranslator.render('.exercise__translator')
+   myTranslator.container.addEventListener('testComplete', onComplete)
+}
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

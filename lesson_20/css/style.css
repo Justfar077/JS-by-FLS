@@ -1,0 +1,210 @@
+.main {
+	background: url(../img/background.jpg) center;
+	min-height: 100vh;
+	padding-bottom: 30px;
+}
+
+/* index */
+
+.main__container {
+	width: 300px;
+	margin: 0 auto;
+	padding: 50px 0;
+}
+.main__title-header {
+	text-align: center;
+	font-size: 30px;
+	line-height: 1.1;
+	font-weight: 500;
+	padding-bottom: 20px;
+}
+.main__link-block {
+	background-color: #f3eeee40;
+	transition: all 0.5s;
+	border-radius: 20px;
+	width: 300px;
+	margin: 30px auto 0;
+	transition: all 0.5s;
+}
+.main__link {
+	display: block;
+	text-align: center;
+	font-size: 25px;
+	padding: 15px 50px;
+	font-weight: 500;
+	line-height: 1.1;
+}
+.task__block {
+	margin: 20px 0;
+	background-color: #f3eeee40;
+	transition: all 0.5s;
+	border-radius: 20px;
+}
+.task__block:hover,
+.main__link-block:hover {
+	transform: scale(1.1);
+}
+
+.task__title {
+	text-align: center;
+	font-size: 25px;
+	padding: 15px 50px;
+	font-weight: 500;
+	line-height: 1.1;
+}
+
+/* tasks */
+
+.main__title {
+	text-align: center;
+	font-size: 30px;
+	padding: 30px 0;
+	font-weight: 700;
+}
+.main__exercise {
+	width: 700px;
+	margin: 0 auto;
+}
+.exercise__description {
+	font-size: 20px;
+	line-height: 1.3;
+	text-align: center;
+	padding: 30px 0;
+}
+.exercise__img {
+	display: block;
+	margin: 0 auto;
+}
+.exercise__result {
+	padding: 30px 0;
+	text-align: center;
+	font-size: 30px;
+}
+
+table,
+th,
+td,
+th {
+	border: 1px solid black;
+	text-align: center;
+	font-size: 25px;
+}
+
+/* task2 */
+
+
+.sandbox {
+	transition: all 0.3s ease 0s;
+}
+.tank {
+	display: block;
+	background: url(../img/tank.png) no-repeat, center;
+	background-size: cover;
+	width: 120px;
+	height: 220px;
+	position: absolute;
+	top: 0;
+	cursor: url('../img/target.svg'), auto;
+	/* cursor: pointer; */
+	/* width: 68px;
+	height: 150px; */
+}
+.explosion {
+	background-image: url(../img/bang.png);
+	background-size: contain;
+}
+
+
+/* task3 */
+
+.exercise__form {
+	font-size: 23px;
+	max-width: 500px;
+	margin: 0 auto 100px;
+}
+.exercise__form input{
+	padding: 2px 5px;
+}
+.exercise__form-block{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+.exercise__label {
+	display: inline-block;
+}
+
+/* task4 */
+.exercise__forms{
+	display: flex;
+	justify-content: space-between;
+	font-size: 20px;
+	max-width: 450px;
+	margin: 0 auto 100px;
+}
+.exercise__input {
+	margin-bottom: 10px;
+	padding: 2px 5px;
+	border-radius: 2px;
+}
+.exercise__button {
+	margin-bottom: 10px;
+	background-color: silver;
+	padding: 2px 30px;
+	border-radius: 2px;
+	transition: all 0.4s;
+	
+}
+.exercise__button:hover{
+	background-color: rgb(200, 188, 188);
+	box-shadow: 0px 1px 4px 2px rgb(147, 140, 140);
+}
+
+/* task5 */
+.exercise__result-container{
+	max-width: 434px;
+	margin: 0 auto 100px;
+	font-size: 23px;
+}
+.exercise__input{
+	margin-left: 20px;
+	border-radius: 5px;
+	padding: 5px 10px;
+}
+.exercise__list{
+	overflow: overlay;
+	max-height: 200px;
+}
+.exercise__item{
+	margin-bottom: 3px;
+}
+
+/* task6 */
+.translator {
+	display: flex;
+	justify-content: center;
+	font-size: 23px;
+}
+.words-list {
+	background-color: #d9d4d4;
+	border: 2px solid black;
+	border-radius: 5px;
+	margin: 20px;
+	width: 200px;
+}
+.item {
+	border: 2px solid black;
+	padding: 5px 10px;
+	border-radius: 5px;
+	margin: 10px;
+	cursor: pointer;
+}
+.selected {
+	background-color: rgb(94, 94, 241);
+}
+.right {
+	background-color: rgb(47, 238, 108);
+}
+.wrong {
+	background-color: rgb(243, 83, 83);
+}

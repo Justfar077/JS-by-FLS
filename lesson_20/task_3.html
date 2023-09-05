@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<style>
+		.star {
+		  position: absolute;
+		  background-color: yellow;
+		  border-radius: 50%;
+		}
+	 </style>
+	<title>Task 3</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 3</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				На формі вводять 7 числових значень 
+				(вік, зріст, вага, заробітна плата, стаж, номер відділу, порядковий номер). 
+				Додати подію обробки події click на форму і якщо клік на внутрішньому input, 
+				то автоматично замінювати значення його на 0. Використати делегування
+			</p>
+			<p class="exercise__result">
+				<form class="exercise__form" action="#">
+					<div class="exercise__form-block">
+						<label for="age" class="exercise__label">Вік</label>
+						<input type="number" id="age" name="age" >
+					</div>
+
+					<div class="exercise__form-block">
+						<label for="height" class="exercise__label">Зріст</label>
+						<input type="number" id="height" name="height" >
+					</div>
+
+					<div class="exercise__form-block">
+						<label for="weight" class="exercise__label">Вага</label>
+						<input type="number" id="weight" name="weight" >
+					</div>
+
+					<div class="exercise__form-block">
+						<label for="salary" class="exercise__label">Заробітна плата</label>
+						<input type="number" id="salary" name="salary" >
+					</div>
+
+					<div class="exercise__form-block">
+						<label for="experience" class="exercise__label">Стаж</label>
+						<input type="number" id="experience" name="experience" >
+					</div>
+
+					<div class="exercise__form-block">
+						<label for="num-department" class="exercise__label">Номер відділу</label>
+						<input type="number" id="num-department" name="num-department" >
+					</div>
+
+					<div class="exercise__form-block">
+						<label for="tax-number" class="exercise__label">Податковий номер</label>
+						<input type="number" id="tax-number" name="tax-number" >
+					</div>
+
+				</form>
+				<script>
+					"use strict"
+
+window.onload = function() {
+	let container = document.querySelector('.exercise__form')
+	container.onclick = function(e){
+		if(e.target.tagName === 'INPUT') e.target.value = 0
+	}
+}
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

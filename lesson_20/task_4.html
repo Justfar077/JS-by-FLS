@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 4</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 4</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				На сторінці міститься певна кількість кнопок і інпутів. 
+				Підраховувати загальну кількість кліків окремо на кнопках і окремо на інпутах.
+			</p>
+			<p class="exercise__result">
+				<form action="#" class="exercise__forms">
+					<div class="exercise__block-input">
+						<input placeholder="click me" type="number" class="exercise__input">
+						<input placeholder="click me" type="number" class="exercise__input">
+						<input placeholder="click me" type="number" class="exercise__input">
+						<input placeholder="click me" type="number" class="exercise__input">
+						<input placeholder="click me" type="number" class="exercise__input">
+						<input placeholder="click me" type="number" class="exercise__input">
+					</div>
+					
+					<div class="exercise__block-button">
+						<button class="exercise__button">click me</button>
+						<button class="exercise__button">click me</button>
+						<button class="exercise__button">click me</button>
+						<button class="exercise__button">click me</button>
+						<button class="exercise__button">click me</button>
+						<button class="exercise__button">click me</button>
+					</div>
+
+				</form>
+				<script>
+					"use strict"
+
+window.onload = function(){
+	let body = document.querySelector('body')
+	let inputCount = 0
+	let buttonCount = 0
+	let resultInputClick = document.createElement('p')
+	let resultButtonClick = document.createElement('p')
+
+	body.addEventListener('click', function (e) {
+		if(e.target.tagName === 'INPUT') inputCount++
+		if(e.target.tagName === 'BUTTON') buttonCount++
+
+		resultInputClick.innerText = `Click of input = ${inputCount}`
+		resultButtonClick.innerText = `Click of button = ${buttonCount}`
+	})
+
+	let container = document.querySelector('.exercise__result')
+	container.append(resultInputClick)
+	container.append(resultButtonClick)
+}
+
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

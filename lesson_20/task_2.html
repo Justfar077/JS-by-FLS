@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 2</title>
+</head>
+<body>
+	<style>
+	body {
+		position: relative;
+		width: 100vw;
+		height: 100vh;
+		overflow: hidden;
+	}
+	</style>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 2</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Байрактар. З верхньої частини екрану у випадковій позиції по 
+				горизонталі з’являються танки, які їдуть вниз. 
+				При кліку на танк він вибухає і зникає з екрану. 
+			</p>
+			<p class="exercise__result">
+				<div class="exercise__task2"></div>
+				<script>
+					"use strict"
+
+class TankGame {
+	constructor(maxTanks, speedY) {
+		this.container = document.body
+		this.tankArr = []
+		this.maxTanks = maxTanks
+		this.speedY = speedY
+		this.container.addEventListener('click', this.onTankClick.bind(this))
+		this.updateContainerHeight()
+		this.startGame()
+	}
+
+	updateContainerHeight() {
+		this.container.style.height = window.innerHeight + 'px'
+	}
+
+	createTank() {
+		if (this.tankArr.length < this.maxTanks) {
+			const tankEl = document.createElement('div')
+			tankEl.classList.add('tank')
+
+			this.container.append(tankEl)
+			const tankWidth = tankEl.offsetWidth
+			tankEl.style.left = `${Math.random() * (window.innerWidth - tankWidth)}px`
+			this.tankArr.push({ element: tankEl, position: 0 })
+			this.moveTank(this.tankArr[this.tankArr.length - 1])
+		}
+	}
+
+	moveTank(tank) {
+		tank.interval = setInterval(() => {
+			tank.position += this.speedY * 10
+
+			if (tank.position >= window.innerHeight - tank.element.offsetHeight) {
+				clearInterval(tank.interval)
+				this.container.removeChild(tank.element)
+				this.tankArr = this.tankArr.filter((t) => t !== tank)
+			} else {
+				tank.element.style.top = `${tank.position}px`
+			}
+		}, 100)
+	}
+
+	onTankClick(event) {
+		const target = event.target
+		const tankIndex = this.tankArr.findIndex((t) => t.element === target)
+
+			if (tankIndex !== -1) {
+				const tank = this.tankArr[tankIndex]
+				clearInterval(tank.interval)
+				target.classList.add('explosion')
+				setTimeout(() => {
+					this.container.removeChild(target)
+					this.tankArr.splice(tankIndex, 1)
+				}, 300)
+			}
+		}
+
+	startGame() {
+		this.gameInterval = setInterval(this.createTank.bind(this), 500)
+	}
+}
+
+const game = new TankGame(3, 1)
+
+
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>
