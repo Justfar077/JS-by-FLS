@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 4</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 4</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Користувач задає місяць навчання учня (перевіряти чи є числом, 
+				чи від 1 до 12, чи не канікули) та оцінку (перевіряти чи є числом, чи від 1 до 100). 
+				Вивести чи зможе він виправити оцінку 
+				(якщо оцінка погана і це не останній місяць у семестрі) . 
+				Обробку усіх помилок зробити з використанням відповідних класів.
+			</p>
+			<p class="exercise__result">
+				<div class="exercise__checker checker"></div>
+				<script>
+					"use strict"
+
+class IsNotNumberError extends Error {
+   constructor() {
+      super()
+      this.message = 'Має бути числом'
+      this.name = 'IsNotNumberError'
+   }
+}
+
+class IsNotHoliday extends Error {
+   constructor() {
+      super()
+      this.message = 'У цей місяць канікули'
+      this.name = 'IsNotHoliday'
+   }
+}
+
+class Is1To100Range extends Error {
+   constructor() {
+      super()
+      this.message = 'має бути число від 1 до 100'
+      this.name = 'Is1To100Range'
+   }
+}
+
+class Checker {
+   validate() {
+		const monthInput = document.querySelector('.month')
+		const scoreInput = document.querySelector('.score')
+		const monthInputValue = monthInput.value.trim()
+		const scoreInputValue = scoreInput.value.trim()
+
+   try {
+      if (isNaN(monthInputValue) && isNaN(scoreInputValue))
+         throw new IsNotNumberError()
+      if (monthInputValue <= 8 && monthInputValue >= 6)
+         throw new IsNotHoliday()
+      if (scoreInputValue < 1 || scoreInputValue > 100)
+         throw new Is1To100Range()
+      } catch (err) {
+         if (err instanceof IsNotNumberError) alert(err.message)
+         else if (err instanceof IsNotHoliday) alert(err.message)
+         else if (err instanceof Is1To100Range) alert(err.message)
+         else console.log(err.message)
+         return false
+      }
+
+      if (monthInputValue != 12 && monthInputValue != 5 && scoreInputValue < 4)
+         this.textResult.innerText = 'Оцінку можна виправити'
+      else this.textResult.innerText = 'Оцінку неможна виправити'
+   }
+
+   render(containerSelector) {
+		const box = document.createElement('div')
+      box.className = 'checker__box'
+
+      const monthLabel = document.createElement('label')
+      monthLabel.className = 'checker__box-label'
+      monthLabel.innerText = 'Введіть місяць навчання учня'
+      box.append(monthLabel)
+
+      const monthInput = document.createElement('input')
+      monthInput.className = 'checker__box-input month'
+      monthInput.setAttribute('placeholder', 'місяць')
+      monthLabel.append(monthInput)
+
+      const scoreLabel = document.createElement('label')
+      scoreLabel.className = 'checker__box-label'
+      scoreLabel.innerText = 'Оцінка'
+      box.append(scoreLabel)
+
+      const scoreInput = document.createElement('input')
+      scoreInput.className = 'checker__box-input score'
+      scoreInput.setAttribute('placeholder', 'оцінка')
+      scoreLabel.append(scoreInput)
+
+		const textResult = document.createElement('p')
+      textResult.className = 'checker__text'
+      this.textResult = textResult
+
+      const boxBtn = document.createElement('button')
+      boxBtn.className = 'checker__box-btn'
+      boxBtn.innerText = 'перевірити'
+      boxBtn.onclick = this.validate.bind(this)
+      box.append(boxBtn)
+
+
+      if (containerSelector) {
+         document.querySelector(containerSelector).append(textResult)
+         document.querySelector(containerSelector).append(box)
+      }
+   }
+}
+
+const checker = new Checker()
+checker.render('.exercise__checker')
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

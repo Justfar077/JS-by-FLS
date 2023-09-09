@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 1</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 1</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				<img src="./img/task1.jpg" alt="task1">
+			</p>
+			<div class="main__header">
+				<div class="main__title">Задача № 2</div>
+			</div>
+			<p class="exercise__description">
+				Створити клас Bank, у якому зберігається масив клієнтів. Виконати такі операції
+				-Вивести усіх простих клієнтів;
+				-Вивести усіх клієнтів GoldenClient;
+				-Знати сумарну кількість грошей на рахунку;
+			</p>
+			<p class="exercise__result">
+				<h1 class="exercise__title-task">Bank</h1>
+				<div class="exercise__container-task"></div>
+				<script>
+					"use strict"
+
+class Client{
+	constructor(clientId, clientName, clientMoney){
+		this.clientId = clientId
+		this.clientName = clientName
+		this.clientMoney = clientMoney
+	}
+	addMoney(money){
+			if(money > 0) 
+			this.clientMoney += money
+	}
+	withdrawMoney(money){
+		if(money <= this.clientMoney && money > 0) this.clientMoney -= money
+	}
+	toString(){
+		return `ID: ${this.clientId}, Client name: ${this.clientName}, Balance: ${this.clientMoney}$`
+	}
+}
+
+class GoldenClient extends Client{
+	constructor(clientId, clientName, clientMoney, clientCreditLimit, clientCreditFee){
+		super(clientId, clientName, clientMoney)
+		this.clientCreditLimit = clientCreditLimit
+		this.clientCreditFee = clientCreditFee
+	}
+	//Перевизначаємо метод за для того щоб використовувати кредитні кошти якщо
+	//сумма зняття перевищує залишок на рахунку
+	withdrawMoney(money){
+		if (money <= 0) {
+			throw new Error ("Сумма должна быть положительной.")
+		}
+		if (this.clientMoney >= money) {
+			this.clientMoney -= money;
+		} else if (this.clientMoney + this.clientCreditLimit >= money) {
+			const remainingDebit = this.clientMoney
+			const remainingCredit = money - this.clientMoney
+			const commission = this.getCreditFee(remainingCredit)
+			if(remainingCredit + commission < this.clientCreditLimit){
+				this.clientMoney = 0
+				this.clientCreditLimit -= remainingCredit + commission
+			}else{
+				throw new Error('Недостатньо грошей на кредитному рахунку')
+			}
+		}
+	}
+	getCreditFee(credit) {
+		if (credit <= this.clientCreditLimit)
+			return credit * (this.clientCreditFee / 100)
+	}
+	//Визначення пені за використання кредитних коштів я зрозумів так що ми в методі
+	//getCreditFee() вираховуємо сумму відсотка та віднімаємо його одразу від сумми
+	//яка прилітає для зняття кредитних коштів в методі withdrawCreditMoney()
+	//бо в нас нема проміжку часу що типу якщо пройде місяць і тоді нарахується пеня і тд.
+	withdrawCreditMoney(money){
+		if(money > 0 && money < (this.clientCreditLimit + this.getCreditFee(money)))
+		this.clientCreditLimit -= money + this.getCreditFee(money)
+	}
+	toString(){
+		return `
+		${super.toString()}
+		Credit limit: ${this.clientCreditLimit}$ ,
+		Interest on loan: ${this.clientCreditFee}% `
+	}
+}
+
+class Bank{
+	constructor(){
+		this.clients = []
+	}
+	addClients(client){
+		this.clients.push(client)
+	}
+	getRegularClients(){
+		return this.clients.filter(client => !(client instanceof GoldenClient))
+	}
+	getGoldenClients(){
+		return this.clients.filter(client => client instanceof GoldenClient)
+	}
+	getTotalBankBalance(){
+		return this.clients.reduce((prev, client) => prev + client.clientMoney, 0)
+	}
+}
+
+let myBank = new Bank()
+
+let client1 = new Client(1234, 'Evhen Zubkov', 18000,)
+let client2 = new Client(3242, 'Artem Yakimchuk', 50000,)
+let client3 = new Client(2343, 'Vladimir Guk', 8000,)
+let client4 = new Client(4654, 'Roman Serga', 15000,)
+let client5 = new Client(5235, 'Valentin Golota', 27000,)
+
+let client6 = new GoldenClient(1457, 'Pavel Cimbal', 7000, 12000, 3)
+let client7 = new GoldenClient(2354, 'Evgen Cvatch', 41000, 4200, 5)
+let client8 = new GoldenClient(3796, 'Fedor Gukovskiy', 18500, 10000, 3)
+let client9 = new GoldenClient(4077, 'Mark Kyshenko', 12100, 5500, 5)
+let client10 = new GoldenClient(5235, 'Evgen Limanchuk', 19600, 4200, 5)
+
+myBank.addClients(client1)
+myBank.addClients(client2)
+myBank.addClients(client3)
+myBank.addClients(client4)
+myBank.addClients(client5)
+myBank.addClients(client6)
+myBank.addClients(client7)
+myBank.addClients(client8)
+myBank.addClients(client9)
+myBank.addClients(client10)
+
+// функції по виводу інформації на сторінку в HTML
+function makeListRegularClient(obj) {
+	const valuesOfKey = obj.map(obj => obj["clientName"]);
+	let container = document.querySelector('.exercise__container-task')
+	let ul = document.createElement('ul')
+	ul.className = 'list-regular-client'
+	ul.innerText = 'Regular Clients'
+	valuesOfKey.forEach(item => {
+		let li = document.createElement('li')
+		li.innerText = item
+		ul.append(li)
+	});
+	container.appendChild(ul)
+}
+
+function makeListGoldenClient(obj) {
+	const valuesOfKey = obj.map(obj => obj["clientName"]);
+	let container = document.querySelector('.exercise__container-task')
+	let ul = document.createElement('ul')
+	ul.className = 'list-golden-client'
+	ul.innerText = 'Golden Clients'
+	valuesOfKey.forEach(item => {
+		let li = document.createElement('li')
+		li.innerText = item
+		ul.append(li)
+	});
+	container.appendChild(ul)
+}
+
+function makeTotalBankBalance(sum) {
+	let container = document.querySelector('.exercise__container-task')
+	let box = document.createElement('div')
+	box.className = 'box-total-balance'
+	let title = document.createElement('h2')
+	title.innerText = 'Total balance:'
+	box.append(title)
+	let p = document.createElement('p')
+	p.innerText = sum + '$'
+	box.append(p)
+	container.append(box)
+}
+
+makeListRegularClient(myBank.getRegularClients())
+makeListGoldenClient(myBank.getGoldenClients())
+makeTotalBankBalance(myBank.getTotalBankBalance())
+
+
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

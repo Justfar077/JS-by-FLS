@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 3</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 3</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				<img src="./img/task3.jpg" alt="task3">
+			</p>
+			<p class="exercise__result">
+				<!-- <img src="./img/house.svg" alt=""> -->
+				<div class="exercise__container-task3"></div>
+				<script>
+					"use strict"
+					
+
+
+class GeneralClass{
+	constructor(axisX, axisY, imgSrc, interval, minValue, maxValue){
+		this.axisX = axisX
+		this.axisY = axisY
+		this.imgSrc = imgSrc
+		this.interval = interval
+		this.minValue = minValue
+		this.maxValue = maxValue
+	}
+	render(containerSelector){
+		this.className = this.constructor.name.toLowerCase()
+		this.imgContainer = document.createElement('div')
+		this.imgContainer.className = this.className
+		this.imgContainer.style.position = 'absolute'
+
+		if(containerSelector)
+		document.querySelector('.exercise__container-task3').append(this.imgContainer)
+
+		this.img = document.createElement('img')
+		this.img.className = this.className + '__img'
+		this.img.setAttribute('src', this.imgSrc)
+		this.img.setAttribute('alt', this.className)
+		this.imgContainer.append(this.img)
+
+		this.changeInterval(this.imgContainer)
+		this.imgContainer.style.top = this.axisY + 'px'
+		this.imgContainer.style.left = this.axisX + 'px'
+
+		return this.imgContainer
+	}
+	getRandomNum(minNum, maxNum){
+		return minNum + Math.floor(Math.random() * (maxNum - minNum +1))
+	}
+	changeInterval(element){
+		setInterval(()=>{
+			this.elementAction(element)
+		}, this.interval)
+	}
+	elementAction(element){
+		throw new Error('elementAction is not implemented')
+	}
+}
+
+class House extends GeneralClass{
+	constructor(axisX, axisY, imgSrc, interval, minValue, maxValue){
+		super(axisX, axisY, imgSrc, interval, minValue, maxValue)
+	}
+	elementAction(element){
+		element.style.transform = `scale(${this.getRandomNum(this.minValue, this.maxValue)})`
+	}
+}
+
+class Dog extends GeneralClass{
+	constructor(axisX, axisY, imgSrc, interval, minValue, maxValue){
+		super(axisX, axisY, imgSrc, interval, minValue, maxValue)
+	}
+	elementAction(element){
+		element.style.left = this.getRandomNum(this.minValue, this.maxValue) + 'px'
+	}
+}
+
+class Bird extends GeneralClass{
+	constructor(axisX, axisY, imgSrc, interval, minValue, maxValue){
+		super(axisX, axisY, imgSrc, interval, minValue, maxValue)
+	}
+	elementAction(element){
+		element.style.left = this.getRandomNum(this.minValue, this.maxValue) + 'px'
+		element.style.top = this.getRandomNum(this.minValue, this.maxValue) + 'px'
+	}
+}
+
+let myHome = new House (100, 100, "./img/house.svg", 800, 1, 2)
+myHome.render('.exercise__container-task3')
+
+let myBird = new Bird (10, 1000, "./img/bird.svg", 1000, 1, 400)
+myBird.render('.exercise__container-task3')
+
+let myDog = new Dog (0, 500, "./img/dog.svg", 1000, 1, 1000)
+myDog.render('.exercise__container-task3')
+
+
+
+
+
+
+
+
+
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>
