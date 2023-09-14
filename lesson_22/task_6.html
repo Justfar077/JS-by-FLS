@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 6</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 6</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Користувач іде у відпустку на 56 днів. Визначити дату на момент його повернення.
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+// function checkVacationDate(dayNum) {
+//    const curDay = new Date()
+//    curDay.setDate(curDay.getDate() + dayNum)
+//    return curDay
+// }
+// document.write(`Вам на роботу виходити  ${checkVacationDate(56).toLocaleString('uk-UA')}`)
+
+class CheckVacationDay{
+	constructor(containerSelector){
+		this.containerSelector = containerSelector
+		this.currentDate = new Date()
+		this.render(containerSelector)
+	}
+	render(containerSelector){
+		this.container = document.createElement('div')
+		this.container.className = 'exercise__container'
+
+		this.input = document.createElement('input')
+		this.input.className = 'exercise__input'
+		this.input.setAttribute('type', 'number')
+		this.input.setAttribute('placeholder', 'Введіть кількість днів')
+		this.container.append(this.input)
+
+		this.button = document.createElement('button')
+		this.button.className = 'exercise__button'
+		this.button.innerText = 'Розрахувати'
+		this.container.append(this.button)
+		this.button.onclick = this.checker.bind(this)
+
+		this.result = document.createElement('p')
+		this.result.className = 'exercise__result-bday'
+		this.container.append(this.result)
+
+		if(containerSelector)
+		document.querySelector(containerSelector).append(this.container)
+	}
+	checker(){
+		this.inputValue = parseInt(document.querySelector('.exercise__input').value)
+		this.myDate = this.currentDate
+		this.myDate.setDate(this.myDate.getDate() + this.inputValue);
+		this.options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+		this.formattedDate = this.myDate.toLocaleDateString('uk-UA', this.options);
+		this.result.classList.add('visible')
+		!isNaN(this.inputValue)
+		? this.result.innerText = `Вам на роботу виходити  ${this.formattedDate}`
+		: this.result.innerText = `Оновіть сторінку та введіть коректне значення`
+	}
+}
+
+let checker = new CheckVacationDay('.exercise__result')
+
+					
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

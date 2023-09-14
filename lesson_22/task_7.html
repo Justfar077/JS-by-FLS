@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 7</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 7</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Користувач бере авто на вказану кількість годин. Визначити кінцевий час повернення.
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+const userHours = parseInt(prompt('Введіть кількіть годин \n оренди автомобіля'))
+
+function checkReturnDate(userHour) {
+	const currentDate = new Date()
+	currentDate.setHours(currentDate.getHours() + userHour)
+	return currentDate
+}
+document.write(
+	`Авто потрібно повернути до ${checkReturnDate(userHours).toLocaleString('uk-UA')}`
+)
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 3</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 3</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Визначити поточну пору року
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+
+function getSeason () {
+	const currentMonth = new Date().getMonth() + 1
+	let result
+	switch (currentMonth) {
+		case 12:
+		case 1:
+		case 2:
+			result = 'Зима'
+			break;
+		case 3:
+		case 4:
+		case 5:
+			result = 'Весна'
+			break;
+		case 6:
+		case 7:
+		case 8:
+			result = 'Літо'
+			break;
+		case 9:
+		case 10:
+		case 11:
+			result = 'Осінь'
+			break;
+	}
+	let message = document.querySelector('.exercise__result')
+	message.className = 'exercise__user-hi'
+	message.innerText = result
+}
+
+window.onload = function(){
+	getSeason()
+}
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

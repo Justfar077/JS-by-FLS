@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 2</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 2</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Вивести дату у форматі
+				“місяць – рік – вихідний/робочий”
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+
+class DateChecker {
+   constructor(containerSelector) {
+		this.containerSelector = containerSelector
+      this.currentMonth = new Date().getMonth()
+      this.currentYear = new Date().getFullYear()
+      this.currentDayOfWeek = new Date().getDay()
+		this.render(this.containerSelector)
+   }
+	getMonthLiteral(month) {
+      const monthNames = [
+         "Січень", "Лютий", "Березень",
+         "Квітень", "Травень", "Червень",
+         "Липень", "Серпень", "Вересень",
+         "Жовтень", "Листопад", "Грудень"
+         ];
+            return monthNames[month];
+   }
+   isWeekend() {
+      return this.currentDayOfWeek === 0 || this.currentDayOfWeek === 6 ? 'вихідний':'робочий'
+   }
+	render(containerSelector){
+		this.container = document.createElement('div')
+		this.container.className = 'date'
+		this.container.innerText = `${this.getMonthLiteral(this.currentMonth)} - ${this.currentYear} - ${this.isWeekend()}`
+		if(containerSelector)
+			document.querySelector(containerSelector).append(this.container)
+	}
+	toString() {
+      return `${this.getMonthLiteral(this.currentMonth)} - ${this.currentYear} - ${this.isWeekend()}`
+   }
+}
+
+window.onload = function(){
+	const dateChecker = new DateChecker('.exercise__result')
+	// або так якщо через toString() - для універсальності класу
+	// document.querySelector('.exercise__result').innerText = dateChecker
+}
+
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

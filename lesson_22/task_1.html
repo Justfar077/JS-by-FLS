@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 1</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 1</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Визначити привітання у залежності від часу доби 
+				(Доброго дня, Доброго ранку, Доброго вечора)
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+function hiUser () {
+	let greeting
+	let currentTime = new Date().getHours()
+
+	if (currentTime < 6) greeting = "Доброї ночі"
+	else if (currentTime < 12) greeting = "Доброго ранку!"
+	else if (currentTime < 18) greeting = "Доброго дня!"
+	else greeting = "Доброго вечора!"
+	
+	let message = document.querySelector('.exercise__result')
+	message.className = 'exercise__user-hi'
+	message.innerText = greeting
+}
+
+hiUser()
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

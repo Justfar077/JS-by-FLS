@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 5</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 5</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Користувач вводить дату народження. Визначити, скільки йому повних років.
+			</p>
+			<p class="exercise__result">
+				<!-- <input type="date" class="exercise__input-bday" id="user_birthday">
+				<button class="exercise__button-bday" id="btn_birthday">Розрахувати</button>
+				<p class="exercise__result-bday"></p> -->
+				<script>
+					"use strict"
+
+// const birthDataInput = document.getElementById('user_birthday')
+// const inputButton = document.getElementById('btn_birthday')
+// const ageOutput = document.querySelector('.exercise__result-bday')
+
+// inputButton.addEventListener('click', function(){
+// 	const birthDate = new Date(birthDataInput.value)
+// 	const currentDate = new Date()
+// 	const ageInMilliseconds = currentDate - birthDate;
+//   	const ageInYears = ageInMilliseconds / (365 * 24 * 60 * 60 * 1000);
+// 	const roundedAge = Math.floor(ageInYears);
+// 	ageOutput.innerText = `Вам зараз ${roundedAge} повних років`;
+// })
+
+class CheckAge{
+	constructor(containerSelector){
+		this.containerSelector = containerSelector
+		this.currentDate = new Date()
+		this.render(containerSelector)
+	}
+	render(containerSelector){
+		this.container = document.createElement('div')
+		this.container.className = 'exercise__container'
+
+		this.input = document.createElement('input')
+		this.input.className = 'exercise__input'
+		this.input.setAttribute('type', 'date')
+		this.container.append(this.input)
+
+		this.button = document.createElement('button')
+		this.button.className = 'exercise__button'
+		this.button.innerText = 'Розрахувати'
+		this.container.append(this.button)
+		this.button.onclick = this.checkUserAge.bind(this)
+
+		this.result = document.createElement('p')
+		this.result.className = 'exercise__result-bday'
+		this.container.append(this.result)
+
+		if(containerSelector)
+		document.querySelector(containerSelector).append(this.container)
+	}
+	checkUserAge(){
+		this.inputValue = document.querySelector('.exercise__input')
+		this.birthDate = new Date(this.inputValue.value)
+		this.currentAge = Math.floor((this.currentDate - this.birthDate) / (365 * 24 * 60 * 60 * 1000))
+		this.result.classList.add('visible')
+		!isNaN(this.currentAge)
+		? this.result.innerText = `Вам зараз ${this.currentAge} повних років`
+		: this.result.innerText = `Введіть коректне значення`
+	}
+}
+
+let checker = new CheckAge('.exercise__result')
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

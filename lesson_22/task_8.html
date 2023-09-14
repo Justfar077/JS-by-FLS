@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 8</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 8</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Задаємо користувачу задачу з додавання двох чисел. 
+				Визначити скільки секунд було використано для розв’язання задачі.
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+function getRandomNum (minNum, maxNum) {
+	return minNum + Math.floor(Math.random() * (maxNum - minNum +1))
+}
+function checker (minNum, maxNum) {
+	const firstNum = getRandomNum(minNum, maxNum)
+	const secondNum = getRandomNum(minNum, maxNum)
+	const result = firstNum + secondNum
+	const userAnswer = parseInt(prompt(`Скільки буде ${firstNum} + ${secondNum}`))
+	if (result === userAnswer) return true
+	else return result
+}
+
+const beforeTime = new Date()
+const example = checker(1,200)
+if (example === true ) document.write('Вірно' + '<br>')
+else document.write(`Невірно, правильна відповідь: ${example}<br>`)
+const afterTime = new Date()
+
+const answerersTime = (afterTime - beforeTime) / 1000
+document.write(`Відповідь зайняла ${answerersTime.toFixed(1)} секунд`)
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

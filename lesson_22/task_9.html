@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 9</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 9</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Дано дата виробництва йогурта (вводимо рік, місяць, день) 
+				та кількість днів придатності. 
+				Визначити чи є він придатним на даний момент.
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+// const checkFresh = (year, month, day, expiryDate) =>
+// 	new Date() <= new Date(year, month - 1, day + expiryDate) ? 'Товар придатний до споживання' : 'Товар непридатний до споживання'
+
+// document.querySelector('.exercise__result').innerText = checkFresh(2022, 4, 1, 60)
+
+class CheckProductExpirationDates{
+	constructor(containerSelector){
+		this.containerSelector = containerSelector
+		this.currentDate = new Date()
+		this.render(containerSelector)
+	}
+	render(containerSelector){
+		this.container = document.createElement('div')
+		this.container.className = 'exercise__container'
+
+		this.input = document.createElement('input')
+		this.input.className = 'exercise__input input-date'
+		this.input.setAttribute('type', 'date')
+		this.container.append(this.input)
+
+		this.input = document.createElement('input')
+		this.input.className = 'exercise__input input-day'
+		this.input.setAttribute('type', 'number')
+		this.input.setAttribute('placeholder', 'Введіть кількість днів')
+		this.container.append(this.input)
+
+		this.button = document.createElement('button')
+		this.button.className = 'exercise__button inp-btn'
+		this.button.innerText = 'Розрахувати'
+		this.container.append(this.button)
+		this.button.onclick = this.checker.bind(this)
+
+		this.result = document.createElement('p')
+		this.result.className = 'exercise__result-bday'
+		this.container.append(this.result)
+
+		if(containerSelector)
+		document.querySelector(containerSelector).append(this.container)
+	}
+	checker(){
+		this.inputDate = document.querySelector('.input-date')
+		this.inputDateValue = new Date(this.inputDate.value)
+		this.inputDayValue = parseInt(document.querySelector('.input-day').value)
+      this.expDays = Math.floor((this.currentDate - this.inputDateValue) / 1000 / 60 / 60 / 24)
+		console.log(this.expDays);
+		console.log(this.inputDayValue);
+		this.result.classList.add('visible')
+		if(this.inputDayValue >= this.expDays) this.result.innerText = 'Товар придатний до споживання'
+      else {
+			this.result.classList.toggle('red')
+			this.result.innerText = 'Товар непридатний до споживання'
+		}
+	}
+}
+
+let checker = new CheckProductExpirationDates('.exercise__result')
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

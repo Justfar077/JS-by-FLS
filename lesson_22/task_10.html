@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 10</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 10</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Сформувати масив з 1000 елементів від 1 до 800. 
+				Порівняти час сортування бульбашкою і  вставкою.
+			</p>
+			<p class="exercise__result">
+				<div class="exercise__sort"></div>
+				<script>
+					"use strict"
+
+function getFillingArray(arrLength, minNum, maxNum) {
+	let array = []
+	for (let i = 0; i < arrLength; i++) {
+		let randomNum = minNum + Math.floor(Math.random() * (maxNum - minNum +1))
+		array.push(randomNum)
+	}
+	return array
+}
+
+function bubbleSort(arr) {
+	let swapped;
+	do {
+		swapped = false;
+		for (let i = 0; i < arr.length - 1; i++) {
+			if (arr[i] > arr[i + 1]) {
+				const temp = arr[i];
+				arr[i] = arr[i + 1];
+				arr[i + 1] = temp;
+				swapped = true;
+			}
+		}
+	} while (swapped);
+}
+
+function insertSort(arr) {
+	for (let i = 1; i < arr.length; i++) {
+		const key = arr[i];
+		let j = i - 1;
+		while (j >= 0 && arr[j] > key) {
+			arr[j + 1] = arr[j];
+			j--;
+		}
+		arr[j + 1] = key;
+	}
+}
+
+function checkTimeSort (arr1, arr2) {
+	let bubbleBeforeTime = new Date()
+	bubbleSort(arr1)
+	let bubbleAfterTime = new Date()
+	let bubbleTotalTime = bubbleAfterTime - bubbleBeforeTime
+
+	let insertBeforeTime = new Date()
+	insertSort(arr2)
+	let insertAfterTime = new Date()
+	let insertTotalTime = insertAfterTime - insertBeforeTime
+
+	let result = document.querySelector('.exercise__sort')
+	result.classList.add('visible-sort')
+	result.innerText = `
+	Сортування бульбашкою тривало - ${bubbleTotalTime} мілісекунд
+	Сортування вставкою тривало -  ${insertTotalTime} мілісекунд`
+}
+function render () {
+	let btn = document.createElement('button')
+	let container = document.querySelector('.exercise__result')
+	btn.className = 'exercise__button'
+	btn.innerText = 'Порівняти'
+	container.append(btn)
+}
+
+window.onload = function(){
+	render()
+	let button = document.querySelector('.exercise__button')
+	button.addEventListener('click', function(){
+		let myArrayFirst = getFillingArray(1000, 1, 800)
+		let myArraySecond = JSON.parse(JSON.stringify(myArrayFirst))
+		checkTimeSort(myArrayFirst, myArraySecond)
+	})
+}
+
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 4</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 4</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Вивести назву дня
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+function getCurrentDay() {
+	const currentDayOfWeek = new Date().getDay()
+   const daysOfWeek = [
+      'неділя',
+      'понеділок',
+      'вівторок',
+      'середа',
+      'четвер',
+      'п`ятниця',
+      'субота',
+   ]
+
+	let message = document.querySelector('.exercise__result')
+	message.className = 'exercise__user-hi'
+	message.innerText = `Сьогодні - ${daysOfWeek[currentDayOfWeek]}`
+}
+
+getCurrentDay()
+
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>
