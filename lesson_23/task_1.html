@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+	<title>Task 1</title>
+</head>
+<body>
+	<div class="main">
+		<div class="main__header">
+			<div class="main__title">Задача № 1-17</div>
+		</div>
+		<div class="main__exercise exercise">
+			<p class="exercise__description">
+				Вирішення задач знаходиться у консолі.
+			</p>
+			<p class="exercise__result">
+				<script>
+					"use strict"
+
+let testArray = ['Marc-André ter Stegen', '1', 'Ronald Araújo', '4', 'Jules Koundé', '23', 'Marcos Alonso', '17', 'João Cancelo', '2', 'Frenkie de Jong', '21', 'Robert Lewandowski', '9', 'Ferran Torres', '7', 'grb', 'ayu',]
+console.log(`test array - ${testArray}`)
+
+let testStr = `Futbol Club Barcelona , commonly referred to as Barcelona and colloquially known as Barça , 
+is a professional football club based in Barcelona, Catalonia, Spain, that competes in La Liga, 
+the top flight of Spanish football. Founded in 1899 by a group of Swiss, Catalan, German, 
+and English footballers led by Joan Gamper, the club has become a symbol of Catalan culture and Catalanism, 
+hence the motto "Més que un club" ("More than a club"). Unlike many other football clubs, 
+the supporters own and operate Barcelona. It is the third-most valuable sports team in the world, 
+worth $5.51 billion, and the world's fourth richest football club in terms of revenue, 
+with an annual turnover of €582.1 million. The official Barcelona anthem is the "Cant del Barça", 
+written by Jaume Picas and Josep Maria Espinàs. 
+Barcelona traditionally play in dark shades of blue and garnet stripes, hence nicknamed Blaugrana. 10.07.2008`
+
+console.log(`test string - ${testStr}`)
+
+// Задача 1. Дано масив рядків. Вивести ті, у яких є цифри (використати метод test та регулярні вирази).
+let task1 = testArray.filter(el => /\d/.test(el))
+console.log(`task1 - ${task1}`)
+
+// Задача 2. Дано масив рядків. Вивести ті, у яких немає цифр.
+let task2 = testArray.filter(el => el.match(/^\D+$/g))
+console.log(`task2 - ${task2}`)
+
+// Задача 3. Дано масив рядків. Вивести ті, у яких є голосні літери.
+let task3 = testArray.filter(el => el.match(/[aeiouy]/gi))
+console.log(`task3 - ${task3}`)
+
+// Задача 4. Дано масив рядків. Вивести ті, у яких немає голосних літер.
+let task4 = testArray.filter(el => el.match(/^[^aeiouy]+$/gi))
+console.log(`task4 - ${task4}`)
+
+// Задача 5. Дано масив рядків. Вивести ті, у яких є або цифра 1 або цифра 3.
+let task5 = testArray.filter(el => el.match(/[13]/g))
+console.log(`task5 - ${task5}`)
+
+// Задача 6. Дано рядок тексту, вивести усі числа, які є у тексті.
+let task6 = testStr.match(/\d+/g)
+console.log(`task6 - ${task6}`)
+
+// Задача 7. Дано рядок тексту. Знайти усі знаки пунктуації, які були використано.
+let task7 = testStr.match(/[\p{P}]+/gu)
+console.log(`task7 - ${task7}`)
+
+// Задача 8. Дано рядок тексту. Вивести усі складові, які розділені розділовими знаками.
+let task8 = testStr.split(/[.,;?!-]/)
+console.log(`task8 - ${task8}`)
+
+// Задача 9. Дано рядок тексту. Перевірити, чи містить він дату у форматі dd.mm.yyyy (dd- день, mm- місяць, yyyy- рік).
+let task9 = testStr.match(/\b\d{2}\.\d{2}\.\d{4}\b/g)
+console.log(`task9 - ${task9}`)
+
+// Задача 10. Дано рядок тексту. Підрахувати кількість двоцифрових чисел у рядку.
+let task10 = testStr.match(/\b\d{2}\b/g)
+let countTask10 = task10 ? task10.length : 0
+console.log(`task10 - ${countTask10}`)
+
+// Задача 11. Визначити чи може бути рядок тексту номером банківської картки (приклад: «4142-3433-2323-3434»). Знайти усі такі номери.
+let myCard = 'Я маю декілька карток з такими номерами: 1234-5678-9101-1120 і 9876-5432-1012-3456'
+let testCard = /\b\d{4}-\d{4}-\d{4}-\d{4}\b/g
+let hasNum = сс => (сс.test(myCard) ? 'Текст містить номер картки' : 'Текст не містить номер картки')
+myCard.match(testCard).forEach((card) => console.log(card))
+console.log(hasNum(testCard))
+
+// Задача 12. Дано адресу сайту. Визначити, чи є він урядовим (містить домен “gov”)
+let task12 = 'https://www.president.gov.ua/'
+let task12Result = str => (str.match(/\.gov/) ? 'Сайт урядовий' : 'Сайт не урядовий')
+// let task12Result = (str) => (str.includes('.gov') ? 'Сайт урядовий' : 'Сайт не урядовий')
+console.log(task12Result(task12))
+
+// Задача 13. Вибрати усі роки після 2021 року з отриманого повідомлення
+let task13Str = '2016, 123, 19, 2020, 15, 2023, 2021, 2022, 12, 2099, 2101, 2199, 2202,2999, 1666, 7123'
+let task13Regex = /(?<!-)(?:20(2[2-9]|[3-9]\d{1}))\b/g
+let task13Result = task13Str.match(task13Regex)
+console.log(task13Result)
+
+// Задача 14. Дано номер телефону. Перевірити, чи є цей телефон телефоном з України (починаєтсья на «+38»)
+let task14Str = '+380123456789'
+let task14Result = str => (str.startsWith('+38') ? 'Український номер телефону' : 'НЕ Український номер телефону')
+console.log(`Номер: ${task14Str} - ${task14Result(task14Str)}`)
+
+// Задача 15. Користувач вводить прізвище та ім’я в одному рядку через пробіл.  Замінити пробіл на дефіс.
+let task15Str = 'Тарас Шевченко'
+let task15Result = task15Str.replace(/\s/g, '-')
+console.log(task15Result)
+
+// Задача 16. Користувач вводить дату у форматі «день.місяць.рік». Отримати рядкове представлення дати у форматі «день/місяць/рік»
+let task16Str = '07.11.1988'
+let task16Result = task16Str.replace(/\./g, '/')
+console.log(task16Result)
+
+// Задача 17. Користувач вводить день (номер дня (0-6) або «sun,mon,tue,wed,thu,fri,sat»). Визначити, чи  є це день вихідним
+let task17Str = 'sun'
+let task17Result = str => (str.match(/(6|0|sat|sun)/gi) ? 'Вихідний' : 'Робочий')
+console.log(task17Result(task17Str))
+
+				</script>
+			</p>
+		</div>
+		<div class="main__link-block">
+			<a class="main__link" href="index.html">Home</a>
+		</div>
+	</div>
+</body>
+</html>
